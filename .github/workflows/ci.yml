@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r pi/requirements.txt ruff
+
+      - name: Lint (critical errors only)
+        # Syntax errors + undefined names. Style is not enforced (yet).
+        run: ruff check --select E9,F63,F7,F82 pi/winamp_player
+
+      - name: Byte-compile
+        run: python -m compileall -q pi/winamp_player
+
+      - name: Import smoke test (headless)
+        working-directory: pi
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python - <<'PY'
+          import importlib
+          mods = ["models", "config", "spotify", "spotify_web", "spotify_auth",
+                  "authorize", "controls", "library", "images",
+                  "ui.skin", "ui.display", "app"]
+          for m in mods:
+              importlib.import_module("winamp_player." + m)
+          print(f"imported {len(mods)} modules OK")
+          PY
