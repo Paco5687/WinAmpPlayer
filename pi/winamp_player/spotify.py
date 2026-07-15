@@ -277,6 +277,7 @@ class WebApiPlayer:
     # -- background worker: all periodic + coalesced network I/O ---------- #
     def _loop(self) -> None:
         last_net = 0.0
+        last_queue = 0.0
         while self._running:
             try:
                 while True:
@@ -298,6 +299,12 @@ class WebApiPlayer:
                     self._latest = (self.web.current_playback(),)
                 except Exception as e:  # noqa: BLE001
                     self.last_error = str(e)
+            if now - last_queue >= 4.0:      # "up next" changes slowly
+                last_queue = now
+                try:
+                    self.state.queue = self.web.queue()   # atomic ref assign
+                except Exception as e:  # noqa: BLE001
+                    self.last_error = f"queue: {e}"
             time.sleep(0.1)
 
     def _safe(self, fn) -> None:
@@ -334,6 +341,7 @@ class WebApiPlayer:
     def _apply(self, data) -> None:
         if not data:
             self.state.status = PlaybackStatus.STOPPED
+            self.state.queue = []
             return
         item = data.get("item") or {}
         album = item.get("album", {})

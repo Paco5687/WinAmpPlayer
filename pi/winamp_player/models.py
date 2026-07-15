@@ -77,6 +77,10 @@ class PlayerState:
     # Populated by the audio tap on real hardware; simulated in mock mode.
     spectrum: list[float] = field(default_factory=list)
 
+    # "Up next" from the Spotify playback queue. Works for any playing context
+    # (incl. followed/editorial playlists we can't read the tracklist of).
+    queue: list[Track] = field(default_factory=list)
+
     @property
     def is_playing(self) -> bool:
         return self.status is PlaybackStatus.PLAYING

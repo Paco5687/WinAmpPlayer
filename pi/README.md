@@ -112,6 +112,14 @@ On the Pi, the "active device" becomes **go-librespot** instead of the Spotify
 app — same code path, no phone. If you see *"No active Spotify device,"* nothing
 is available to play on yet.
 
+### "Up Next" tracklist
+
+In `webapi` mode the now-playing view shows an **UP NEXT** list from the Spotify
+**playback queue** (`GET /me/player/queue`). This gives you a tracklist for
+*anything* playing — including followed/editorial playlists whose tracks Dev Mode
+won't let us read directly, and whatever's playing on another device. It shows
+what's coming up (not the full playlist history).
+
 ## Notes / TODO
 
 - **Album art** is now real (fetched + cached from the Web API in `images.py`).

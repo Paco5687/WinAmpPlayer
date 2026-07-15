@@ -329,17 +329,33 @@ class Display:
 
     def _draw_now_playing(self, state: PlayerState) -> None:
         r = self.L.screen
-        size = min(r.w - 100, 190)
-        art = Rect(r.cx - size // 2, r.y + 34, size, size)
+        size = min(r.w - 200, 128)
+        art = Rect(r.cx - size // 2, r.y + 24, size, size)
         self._blit_art(state.track.art_url, art, "♪")
-        y = art.y + art.h + 16
+        y = art.y + art.h + 12
         self._center_line(state.track.title, r, y, self.f_title, skin.TEXT)
         self._center_line(state.track.artist, r, y + 22, self.f_small, skin.TEXT_DIM)
-        self._center_line(state.track.album, r, y + 40, self.f_tiny, skin.TEXT_DIM)
-        bar = Rect(r.x + 40, y + 64, r.w - 80, 6)
+        bar = Rect(r.x + 40, y + 44, r.w - 80, 6)
         _inset(self.surface, bar, skin.METAL_LO)
         fill = Rect(bar.x, bar.y, int(bar.w * state.progress), bar.h)
         pygame.draw.rect(self.surface, skin.ACCENT, fill.as_tuple())
+        self._draw_queue(state, bar.y + 18)
+
+    def _draw_queue(self, state: PlayerState, top: int) -> None:
+        """'Up next' from the playback queue — a tracklist for anything playing."""
+        r = self.L.screen
+        if not state.queue:
+            return
+        self.surface.blit(self.f_tiny.render("UP NEXT", True, skin.ACCENT), (r.x + 12, top))
+        row_h = 20
+        y0 = top + 16
+        max_rows = max(0, (r.y + r.h - y0 - 6) // row_h)
+        for i, tr in enumerate(state.queue[:max_rows]):
+            ry = y0 + i * row_h
+            self.surface.blit(self.f_tiny.render(f"{i + 1:2}.", True, skin.TEXT_DIM), (r.x + 12, ry))
+            self.surface.blit(self.f_small.render(_ellipsize(tr.display, 38), True, skin.TEXT),
+                              (r.x + 38, ry - 1))
+            self._blit_right(self.f_tiny, _mmss(tr.duration_ms), r.x + r.w - 10, ry, skin.TEXT_DIM)
 
     def _center_line(self, text: str, r: Rect, y: int, font, col) -> None:
         surf = font.render(_ellipsize(text, 40), True, col)

@@ -28,6 +28,20 @@ class Playlist:
     owned: bool = True
 
 
+def track_from_item(t: dict) -> Track:
+    """Build a Track from a Spotify track object (used by playlists + queue)."""
+    album = t.get("album", {}) or {}
+    images = album.get("images") or []
+    return Track(
+        title=t.get("name", "—"),
+        artist=", ".join(a["name"] for a in t.get("artists", []) if a.get("name")),
+        album=album.get("name", ""),
+        duration_ms=int(t.get("duration_ms", 0)),
+        uri=t.get("uri"),
+        art_url=images[0]["url"] if images else None,
+    )
+
+
 class SpotifyWeb:
     def __init__(self, authorizer: Authorizer) -> None:
         import requests
@@ -110,19 +124,24 @@ class SpotifyWeb:
         tracks = []
         for element in data.get("items", []):
             t = element.get("item") or element.get("track") or {}
-            if not t:
-                continue
-            album = t.get("album", {})
-            images = album.get("images") or []
-            tracks.append(Track(
-                title=t.get("name", "—"),
-                artist=", ".join(a["name"] for a in t.get("artists", [])),
-                album=album.get("name", ""),
-                duration_ms=int(t.get("duration_ms", 0)),
-                uri=t.get("uri"),
-                art_url=images[0]["url"] if images else None,
-            ))
+            if t:
+                tracks.append(track_from_item(t))
         return tracks
+
+    def queue(self) -> list[Track]:
+        """Upcoming tracks from the playback queue. Works for any playing
+        context, including followed/editorial playlists. Returns [] when nothing
+        is playing; raises on a real error (e.g. a Dev-Mode 403) so the caller
+        can note it."""
+        r = self._requests.get(f"{API}/me/player/queue", headers=self._headers(), timeout=10)
+        if r.status_code == 401:
+            self._token = self._auth.load_valid()
+            r = self._requests.get(f"{API}/me/player/queue", headers=self._headers(), timeout=10)
+        if r.status_code == 204 or not r.content:
+            return []
+        r.raise_for_status()
+        data = r.json()
+        return [track_from_item(t) for t in (data.get("queue") or []) if t]
 
     # -- playback control ------------------------------------------------- #
     def devices(self) -> list[dict]:
