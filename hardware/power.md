@@ -19,7 +19,7 @@ power once a fader reaches its target, so the holding current is ~0.
 | Pi 4 B (app + Wi-Fi + audio) | 4.5 W | 7 W | 4 cores + USB busy |
 | 4″ DSI/HDMI LCD + backlight | 1.2 W | 2 W | backlight dominates |
 | I2S DAC + headphones | 0.3 W | 0.5 W | |
-| (optional) speaker amp | 0 W | 3 W | only if built-in speaker, at volume |
+| speaker amp (TPA2016, internal stereo) | 1 W | 3 W | standalone playback; ~0 W with headphones (amp muted) |
 | RP2040 + mux + LEDs | 0.4 W | 1 W | |
 | Motorized faders (10×) | ~0.2 W avg | **~12–15 W** | brief spikes when several move at once |
 | **System** | **~6.5 W avg** | **~20 W peak** | design the 5 V rail for **5 A** headroom |

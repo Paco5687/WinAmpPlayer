@@ -73,5 +73,21 @@ three facts that change the body:
 | Pico | 51 × 21 mm | `pico-datasheet.pdf` |
 | OLED module | ≈ 88 × 27.8 mm | NHD spec (verify) |
 
+## Speakers (added 2026-07-16 — standalone playback, headphones optional)
+
+- **Drivers**: enclosed stereo pair, **70 × 30 × 17 mm each** (sealed backs — no
+  custom acoustic chamber needed; they just bolt in). Fits the 32 mm depth.
+- **Placement**: side edges of the top module firing outward, or flanking the
+  screen — decide in CAD around the fader bank. Keep them away from the
+  HyperPixel's rear (magnet clearance) and off the fader axis (vibration).
+- **Grilles**: a drilled hole pattern looks *great* in anodized aluminum and is
+  trivially machinable (≥1.5 mm holes, ≥2× diameter spacing). The FDM version
+  prints the same pattern.
+- **Headphone jack**: panel-mount switched TRS; insertion detect → MCP23017
+  spare input → firmware mutes the TPA2016 over I2C. Jack near the bottom edge
+  (cable hangs naturally when handheld).
+- **Vibration**: mount drivers on thin foam gaskets so the aluminum panel
+  doesn't buzz at volume.
+
 Grab the **ALPS STEP model** from the product page when CAD starts — it's the
 part everything else packs around.

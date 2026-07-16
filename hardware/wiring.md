@@ -58,14 +58,15 @@ rides one I2C bus instead:
 
 ```
                         ┌── PCA9685 #1 ──▶ DRV8833 ×3 ──▶ fader motors 0–5
-Pico I2C (2 pins) ──────┼── PCA9685 #2 ──▶ DRV8833 ×2 ──▶ fader motors 6–9
-                        ├── MPR121  ──▶ 10 fader touch-sense lines
-                        └── MCP23017 ──▶ 13 panel buttons
+                        ├── PCA9685 #2 ──▶ DRV8833 ×2 ──▶ fader motors 6–9
+Pico I2C (2 pins) ──────┼── MPR121  ──▶ 10 fader touch-sense lines
+                        ├── MCP23017 ──▶ 13 panel buttons + headphone-jack detect
+                        └── TPA2016 amp ──▶ internal stereo speakers (gain/AGC/mute)
 ```
 
 | Function | Pico pins | Count |
 |---|---|---|
-| I2C bus (PCA9685 ×2, MPR121, MCP23017) | GP4/GP5 | 2 |
+| I2C bus (PCA9685 ×2, MPR121, MCP23017, TPA2016) | GP4/GP5 | 2 |
 | Mux (CD74HC4067) select S0–S3 | GP6–GP9 | 4 |
 | Mux common out → ADC (wipers + balance pot) | GP26 (ADC0) | 1 |
 | OLED readout (SSD1322, SPI + DC/CS/RST) | GP10–GP14 | 5 |
@@ -104,9 +105,12 @@ See `firmware/src/main.cpp` for the skeleton.
 - LiPo → power board (5 V boost) → Pi 4; motors get their own regulated rail off
   the same pack (H-bridges draw spikes — decouple well, keep motor ground and
   logic ground joined at one star point).
-- **USB DAC** on a Pi USB port → 3.5 mm headphone jack (the HyperPixel's DPI
-  takes the I2S pins, so no GPIO DAC); optional PAM8302 + small speaker for a
-  built-in speaker. Pi USB budget: RP2040 + DAC = 2 of 4 ports.
+- **USB DAC** on a Pi USB port (the HyperPixel's DPI takes the I2S pins, so no
+  GPIO DAC) → line out → **switched headphone jack** → **TPA2016 stereo amp** →
+  internal enclosed speakers. Headphone insertion is sensed (MCP23017 input) and
+  firmware mutes the amp over I2C. Pi USB budget: RP2040 + DAC = 2 of 4 ports.
+- External outputs are **software**: Spotify Connect transfer for Sonos/Connect
+  gear (Web API `transfer_to`), and BT A2DP via the Pi 4's onboard Bluetooth.
 
 ## Enclosure
 

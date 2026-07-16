@@ -56,10 +56,17 @@
   <rect x="305" y="470" width="130" height="58" rx="8" fill="#26282e" stroke="#4cc9f0"/>
   <text x="370" y="494" fill="#d2d6de" font-size="14" text-anchor="middle" font-weight="bold">USB DAC</text>
   <text x="370" y="514" fill="#8a8f99" font-size="11" text-anchor="middle">audio out</text>
-  <path d="M 435 499 H 490" fill="none" stroke="#2cff78" stroke-width="3"/>
-  <circle cx="505" cy="499" r="14" fill="none" stroke="#2cff78" stroke-width="2"/>
-  <circle cx="505" cy="499" r="4" fill="#2cff78"/>
-  <text x="505" y="534" fill="#8a8f99" font-size="11" text-anchor="middle">3.5 mm out</text>
+  <path d="M 435 499 H 470" fill="none" stroke="#2cff78" stroke-width="3"/>
+  <circle cx="484" cy="499" r="12" fill="none" stroke="#2cff78" stroke-width="2"/>
+  <circle cx="484" cy="499" r="3" fill="#2cff78"/>
+  <text x="484" y="479" fill="#8a8f99" font-size="10" text-anchor="middle">switched 3.5 mm</text>
+  <path d="M 484 511 V 556" fill="none" stroke="#2cff78" stroke-width="3"/>
+  <rect x="404" y="556" width="160" height="58" rx="8" fill="#26282e" stroke="#2cff78"/>
+  <text x="484" y="579" fill="#d2d6de" font-size="13" text-anchor="middle" font-weight="bold">TPA2016 amp</text>
+  <text x="484" y="597" fill="#8a8f99" font-size="10" text-anchor="middle">2.8 W stereo · I2C on RP2040 bus</text>
+  <path d="M 484 614 V 640" fill="none" stroke="#2cff78" stroke-width="3"/>
+  <text x="484" y="660" fill="#d2d6de" font-size="12" text-anchor="middle">◁ internal speakers ▷</text>
+  <text x="484" y="676" fill="#8a8f99" font-size="10" text-anchor="middle">enclosed stereo pair · jack insert mutes amp</text>
 
   <!-- USB serial Pi->Pico -->
   <path d="M 470 410 V 440 H 590 V 300 H 640" fill="none" stroke="#4cc9f0" stroke-width="3"/>
@@ -99,7 +106,7 @@
 
   <!-- ============ I2C bus + expanders (right column) ============ -->
   <path d="M 830 300 H 880 V 640" fill="none" stroke="#b06cff" stroke-width="4"/>
-  <text x="893" y="290" fill="#b06cff" font-size="13" font-weight="bold">I2C bus (2 pins, 4 devices)</text>
+  <text x="893" y="290" fill="#b06cff" font-size="13" font-weight="bold">I2C bus (2 pins, 5 devices incl. TPA2016)</text>
 
   <rect x="920" y="310" width="160" height="66" rx="8" fill="#26282e" stroke="#b06cff"/>
   <text x="1000" y="336" fill="#d2d6de" font-size="13" text-anchor="middle" font-weight="bold">PCA9685 #1</text>
