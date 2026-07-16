@@ -55,8 +55,8 @@ Spotify ──▶ go-librespot ──▶ ALSA (software graphic EQ) ──▶ I2
 | `models.py` | `PlayerState`, `Track` — the single source of truth the UI renders |
 | `spotify.py` | `MockPlayer` (simulation) and `LibrespotPlayer` (real go-librespot) behind one `PlayerBackend` interface |
 | `controls.py` | Serial protocol + `MockControls` / `SerialControls` |
-| `ui/skin.py` | Palette + portrait layout rectangles (WinAmp-inspired, original assets) |
-| `ui/display.py` | Renders each frame; turns mouse/touch into semantic actions |
+| `ui/skin.py` | Palette + shared drawing helpers |
+| `ui/screen.py` | Compact **multi-view** screen UI (Now Playing / Playlists / Queue) for the square LCD; turns touch/buttons into actions |
 | `app.py` | Main loop, action routing, and **motor sync** |
 
 ### Motor sync — the signature trick

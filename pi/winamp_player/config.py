@@ -30,7 +30,7 @@ class Config:
 
     # UI.
     fullscreen: bool = False       # True on the device's LCD
-    window_size: tuple[int, int] = (500, 800)  # portrait, 5:8 like the body
+    window_size: tuple[int, int] = (720, 720)  # square — HyperPixel 4.0 Square
     fps: int = 30
     show_hardware_legend: bool = True  # shade physical vs touchscreen regions
 

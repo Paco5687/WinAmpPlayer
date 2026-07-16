@@ -50,12 +50,12 @@ pip install -r requirements.txt
 python -m winamp_player
 ```
 
-A portrait window opens with the WinAmp-style skin: green LCD readout, a live
-spectrum analyzer, a demo playlist, working transport buttons, and draggable EQ /
-volume / seek faders. Regions are shaded to show what's a **physical control**
-vs. the **color touchscreen** on the real device (press `L` to toggle).
+A square (720×720) window opens with the device's **multi-view UI** — the same
+screen that runs on the HyperPixel: **Now Playing**, **Playlists**, and **Up Next**.
+Switch views with the bottom tabs (or keys `1`/`2`/`3`). Transport/EQ/faders are
+physical hardware on the real device, not on the screen.
 
-Keys: `space` play/pause · `←/→` prev/next · `↑/↓` volume · `s` stop · `q` quit.
+Keys: `1/2/3` switch views · `space` play/pause · `←/→` prev/next · `↑/↓` volume · `s` stop · `q` quit.
 
 Requires **Python 3.11+** (uses `tomllib`).
 

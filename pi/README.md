@@ -14,23 +14,20 @@ python -m winamp_player
 
 Requires **Python 3.11+** (uses the stdlib `tomllib`).
 
-**Controls in the window:**
+A square (720×720) **multi-view** window opens — the device screen: **Now Playing**,
+**Playlists**, **Up Next**. On the real device these views are switched by dedicated
+physical buttons; transport/EQ/faders are hardware, not on screen.
+
+**Controls in the window (dev):**
 
 | Input | Action |
 |---|---|
-| Click transport buttons | prev / play / pause / stop / next / eject |
-| Drag EQ / preamp faders | set band gain (center = 0 dB) |
-| Drag VOL / SEEK faders | volume / scrub |
-| Click a playlist row | play that track |
+| Tabs / `1` `2` `3` / `Tab` | switch view (Now Playing / Playlists / Up Next) |
+| Tap a playlist row | open + play that playlist |
 | `space` | play/pause |
 | `←` / `→` | prev / next |
 | `↑` / `↓` | volume |
-| `s` | stop |
-| `L` | toggle the physical-vs-touchscreen shading |
-| `q` / `Esc` | quit |
-
-The cool-tinted regions are **physical controls** on the real device; the
-warm-tinted center is the **color touchscreen**.
+| `s` | stop · `q` / `Esc` quit |
 
 ## Connect Spotify (Web API — playlists & album art)
 

@@ -30,8 +30,7 @@ from .models import EQ_BANDS, PlaybackStatus, Track
 from .power import make_battery
 from .spotify import make_backend
 from .spotify_web import make_web
-from .ui.display import Display
-from .ui.skin import Layout
+from .ui.screen import ScreenUI
 
 
 class App:
@@ -47,12 +46,10 @@ class App:
         self.web = make_web(cfg)
         self.backend = make_backend(cfg, self.web)
         self.controls = make_controls(cfg)
-        self.layout = Layout(*cfg.window_size)
-        self.display = Display(self.surface, self.layout, self.on_action,
-                               show_legend=cfg.show_hardware_legend)
 
         # Browsing (real Spotify playlists) + async album art.
         self.images = ImageCache()
+        self.screen = ScreenUI(self.surface, self.on_action, self.images)
         self.browse = BrowseState()
         self.browse.can_play_followed = getattr(self.backend, "real_playback", False)
         self.library, msg = make_library(self.web)
@@ -87,11 +84,13 @@ class App:
             b.next()
         elif action == "prev":
             b.prev()
-        elif action == "show_library":
-            if self.browse.has_library:
-                self.browse.view = "library"
+        elif action == "set_view":
+            self.screen.set_view(kw["name"])
+        elif action == "show_library":       # legacy alias -> Playlists view
+            self.screen.set_view("playlists")
         elif action == "open_playlist":
             self._open_playlist(kw["index"])
+            self.screen.set_view("now_playing")
         elif action == "seek":
             b.seek(kw["position_ms"])
         elif action == "set_volume":
@@ -260,8 +259,8 @@ class App:
             self._read_battery(dt)
             self.backend.poll()
             self._sync_motors()
-            self.display.update(self.backend.state, dt)
-            self.display.draw(self.backend.state, self.browse, self.images)
+            self.screen.update(self.backend.state, dt)
+            self.screen.draw(self.backend.state, self.browse)
             pygame.display.flip()
         self._shutdown()
 
@@ -272,7 +271,7 @@ class App:
             elif event.type == pygame.KEYDOWN:
                 self._on_key(event.key)
             else:
-                self.display.handle_event(event, self.backend.state, self.browse)
+                self.screen.handle_event(event, self.backend.state, self.browse)
 
     def _on_key(self, key: int) -> None:
         st = self.backend.state
@@ -290,10 +289,15 @@ class App:
             self.on_action("set_volume", volume=st.volume - 0.05)
         elif key == pygame.K_s:
             self.on_action("stop")
-        elif key == pygame.K_b:
-            self.on_action("show_library")
-        elif key == pygame.K_l:
-            self.display.show_legend = not self.display.show_legend
+        # View switching (physical buttons send these on the device; keys in dev).
+        elif key == pygame.K_1:
+            self.screen.set_view("now_playing")
+        elif key == pygame.K_2:
+            self.screen.set_view("playlists")
+        elif key == pygame.K_3:
+            self.screen.set_view("queue")
+        elif key == pygame.K_TAB:
+            self.screen.cycle_view(1)
 
     def _shutdown(self) -> None:
         self.backend.close()

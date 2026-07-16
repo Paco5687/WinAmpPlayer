@@ -36,7 +36,7 @@ jobs:
           import importlib
           mods = ["models", "config", "spotify", "spotify_web", "spotify_auth",
                   "authorize", "controls", "library", "images",
-                  "ui.skin", "ui.display", "app"]
+                  "ui.skin", "ui.screen", "power", "app"]
           for m in mods:
               importlib.import_module("winamp_player." + m)
           print(f"imported {len(mods)} modules OK")
