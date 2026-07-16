@@ -33,15 +33,27 @@ pio device monitor      # watch the serial link
 > The `main.cpp` skeleton still drives one fader on direct pins for bring-up;
 > switch to the PCA9685 when scaling past one.
 
-`src/main.cpp` is a well-commented skeleton — the structure and protocol are
-real; pin numbers and PID gains are placeholders to tune on the bench. Start by
-getting **one** fader tracking a target smoothly, then replicate.
+The firmware is **fully built out** (desk-written 2026-07-16, compiles clean,
+untested on hardware): every I2C device driver, the OLED readout with the `DISP`
+marquee, buttons/encoders/touch/battery events, and the per-fader PID against
+the PCA9685. `src/config.h` holds all pins, addresses, and tuning constants —
+including **feature flags** (`HAS_PCA9685`, `HAS_OLED`, …) so bench bring-up can
+enable one subsystem at a time. A missing I2C board logs `... MISSING` and
+degrades instead of hanging.
 
-## Bring-up order
+## Bring-up order (with the full firmware)
 
-1. Serial echo: reply `PONG` to `PING`. Confirm the Pi sees it.
-2. Read one fader's wiper through the mux; stream `EV FADER 8 <pos>`.
-3. Drive one motor open-loop both directions.
-4. Close the loop: PID one fader to a target from the Pi. Tune Kp/Ki/Kd.
-5. Add touch-sense → `EV TOUCH`; verify the Pi stops driving when grabbed.
-6. Scale to all faders + buttons + encoders.
+1. Flash with **all `HAS_*` flags off except none needed** — `PING`→`PONG` over
+   USB proves the link (`LOG winamp-fw ready`).
+2. Enable `HAS_MCP23017` → press buttons, watch `EV BTN`. Encoders are always
+   on (direct GPIO) — turn them, watch `EV ENC`.
+3. Wire fader #1 (wiper → mux ch0, motor → PCA A ch0/1, touch → MPR121 e0);
+   enable `HAS_PCA9685` + `HAS_MPR121`. Send `FADER 0 512` — tune `PID_KP/KD`
+   and `PWM_MIN_MOVE` (stiction floor) in `config.h` until it glides.
+4. Enable `HAS_OLED` — the Pi's `DISP` stream should show time + title.
+5. Enable `HAS_TPA2016` + `HAS_MAX17040` — battery `EV BAT` every 5 s, jack
+   insert mutes the amp.
+6. Scale to all 10 faders.
+
+⚠️ Safety built in: PCA9685 **/OE is held high (motors disabled) until the
+firmware has zeroed all channels** — no fader slam on boot.

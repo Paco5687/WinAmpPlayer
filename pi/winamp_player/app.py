@@ -213,6 +213,11 @@ class App:
         elif ev.type is ControlEventType.FADER:
             frac = ev.value / FADER_MAX
             self._fader_moved(ev.id, frac)
+        elif ev.type is ControlEventType.BATTERY:
+            self.backend.state.battery_percent = ev.value / 10.0
+        elif ev.type is ControlEventType.CHARGING:
+            self.backend.state.battery_charging = bool(ev.value)
+        # JACK is handled entirely in firmware (amp mute); nothing to do here.
 
     def _fader_moved(self, fader_id: int, frac: float) -> None:
         st = self.backend.state
