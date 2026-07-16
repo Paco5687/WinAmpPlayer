@@ -28,8 +28,11 @@ All events are `EV <TYPE> <id> <value>`:
 | `EV BTN <id> <0\|1>` | 1 = pressed, 0 = released | Button state change (debounced). |
 | `EV FADER <id> <0..1023>` | ADC position | A fader was moved **by the user** (only sent while touched/released, not while the motor is driving it). |
 | `EV TOUCH <id> <0\|1>` | 1 = grabbed | User is touching a motorized fader. The Pi stops driving it until `0`. |
-| `EV ENC <id> <±delta>` | signed step count | Rotary encoder moved. |
-| `EV POT <id> <0..1023>` | ADC value | Potentiometer moved. |
+| `EV ENC <id> <±delta>` | signed detent count | Rotary encoder moved. |
+| `EV POT <id> <0..1023>` | ADC value | Potentiometer moved (0 = balance). |
+| `EV BAT 0 <0..1000>` | state-of-charge ×10 | Battery SoC from the X728's MAX17040 (on the RP2040 I2C bus), every ~5 s. |
+| `EV CHG 0 <0\|1>` | 1 = on AC/charging | X728 power-loss-detect line. |
+| `EV JACK 0 <0\|1>` | 1 = headphones in | Jack insertion. Firmware mutes the speaker amp itself; informational for the UI. |
 
 Plus out-of-band: `PONG` (reply to `PING`) and `LOG <text>` (firmware debug,
 ignored by the parser).
@@ -49,7 +52,7 @@ ignored by the parser).
 5 eject (spare) · 6 shuffle · 7 repeat · 8 eq-on/off · **9 view:now-playing ·
 10 view:playlists · 11 view:queue** (the dedicated view-switch buttons for the
 central screen) · 12 eq-preset (cycles presets; the motorized faders animate
-into each curve).
+into each curve) · **13/14 encoder push switches**.
 
 **Pots** (`PotId`, via `EV POT`): 0 balance (L/R, non-motorized).
 

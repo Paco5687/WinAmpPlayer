@@ -19,6 +19,7 @@ fetch mpr121-cap-touch.pdf          "https://www.nxp.com/docs/en/data-sheet/MPR1
 fetch mcp23017-gpio-expander.pdf    "https://ww1.microchip.com/downloads/en/devicedoc/20001952c.pdf"
 fetch cd74hc4067-mux.pdf            "https://www.ti.com/lit/ds/symlink/cd74hc4067.pdf"
 fetch drv8833-motor-driver.pdf      "https://www.ti.com/lit/ds/symlink/drv8833.pdf"
+fetch tpa2016-speaker-amp.pdf       "https://www.ti.com/lit/ds/symlink/tpa2016d2.pdf"
 fetch ws2812b-led.pdf               "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf"
 
 # --- Boards / compute (case design) ---------------------------------------- #

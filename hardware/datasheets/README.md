@@ -14,6 +14,7 @@ copyright, so the repo ships the script + this index instead of the files.
 | `mcp23017-gpio-expander.pdf` | Microchip MCP23017 | 16 GPIO, I2C 0x20–0x27, interrupt outs |
 | `cd74hc4067-mux.pdf` | TI CD74HC4067 | 16:1 analog mux, ~70 Ω on-resistance |
 | `drv8833-motor-driver.pdf` | TI DRV8833 | dual H-bridge, 2.7–10.8 V, 1.5 A RMS/bridge |
+| `tpa2016-speaker-amp.pdf` | TI TPA2016D2 | stereo Class-D 2.8 W@4Ω/5 V, I2C 0x58, AGC, shutdown |
 | `ws2812b-led.pdf` | WS2812B | 800 kHz single-wire, 5 V |
 | `pico-datasheet.pdf` / `pico-pinout.pdf` | Raspberry Pi Pico | board 51 × 21 mm, pin functions |
 | `pi4-mechanical-drawing.pdf` | Pi 4 B | board 85 × 56 mm, port + hole positions |

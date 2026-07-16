@@ -58,14 +58,15 @@ rides one I2C bus instead:
 
 ```
                         ┌── PCA9685 #1 ──▶ DRV8833 ×3 ──▶ fader motors 0–5
-Pico I2C (2 pins) ──────┼── PCA9685 #2 ──▶ DRV8833 ×2 ──▶ fader motors 6–9
-                        ├── MPR121  ──▶ 10 fader touch-sense lines
-                        └── MCP23017 ──▶ 13 panel buttons
+                        ├── PCA9685 #2 ──▶ DRV8833 ×2 ──▶ fader motors 6–9
+Pico I2C (2 pins) ──────┼── MPR121  ──▶ 10 fader touch-sense lines
+                        ├── MCP23017 ──▶ 13 panel buttons + headphone-jack detect
+                        └── TPA2016 amp ──▶ internal stereo speakers (gain/AGC/mute)
 ```
 
 | Function | Pico pins | Count |
 |---|---|---|
-| I2C bus (PCA9685 ×2, MPR121, MCP23017) | GP4/GP5 | 2 |
+| I2C bus (PCA9685 ×2, MPR121, MCP23017, TPA2016) | GP4/GP5 | 2 |
 | Mux (CD74HC4067) select S0–S3 | GP6–GP9 | 4 |
 | Mux common out → ADC (wipers + balance pot) | GP26 (ADC0) | 1 |
 | OLED readout (SSD1322, SPI + DC/CS/RST) | GP10–GP14 | 5 |
@@ -83,6 +84,50 @@ Each motorized fader needs **three** connections handled together:
 > a faint buzz *while a fader is moving*. Moves last well under a second, and the
 > **reduced build** (only volume + seek motorized, driven directly from Pico PWM
 > pins at 20 kHz+) sidesteps it completely.
+
+## Electrical detail notes (desk-verified against datasheets, 2026-07-16)
+
+**I2C address map** — no conflicts ✓:
+
+| Device | Addr | Note |
+|---|---|---|
+| PCA9685 #1 | 0x40 | default |
+| PCA9685 #2 | 0x41 | solder jumper A0 |
+| MCP23017 | 0x20 | A0–A2 → GND |
+| X728 fuel gauge (MAX17040) | 0x36 | see battery note below |
+| TPA2016 amp | 0x58 | fixed |
+| MPR121 | 0x5A | ADDR → GND |
+
+- **Pull-ups**: every breakout ships its own (typ. 10 k). Six in parallel ≈ 1.7 k —
+  near the 3 mA sink limit. If the bus misbehaves, desolder pull-ups from all but
+  one board.
+- **Motor-safe boot**: PCA9685 outputs are indeterminate until configured — tie
+  both boards' **/OE to GP3 with a pull-up** so motors stay disabled until the
+  firmware releases them. (GP3 was spare.)
+- **Simultaneous-slew current**: stagger the PCA9685 per-channel ON offsets so 10
+  motors don't switch in phase; with the 2× 2200 µF bulk caps that tames rail sag.
+- **Touch-sense wiring**: each fader's T terminal → an MPR121 electrode. Keep the
+  runs short and away from the motor leads (they're capacitive sense lines).
+
+**Mux channel map** (CD74HC4067 → ADC0):
+
+| CH | Signal |
+|---|---|
+| 0–6 | EQ band wipers 0–6 |
+| 7 | preamp wiper |
+| 8 | volume wiper |
+| 9 | seek wiper |
+| 10 | balance pot |
+| 11–15 | spare |
+
+**Battery telemetry** — the X728 can't stack on the Pi (HyperPixel owns the
+header); it runs beside it and powers the Pi over USB-C. Its **MAX17040 fuel
+gauge is I2C** — so jumper the X728 header's SDA/SCL/GND over to the **RP2040
+bus** (addr 0x36, no conflict) and the firmware reports real state-of-charge over
+serial (`power.py` already knows the MAX17040 registers). X728's AC-loss/PLD
+signal → **GP2** (was spare) for charge-state. Fallback if the jumpering fights
+us: a resistor divider off the battery to **GP28/ADC2** (for a 1S pack, 4.2 V max:
+39 k / 100 k → 3.0 V full-scale — **verify the X728's cell topology first**).
 
 ## Control loop (firmware)
 
@@ -104,9 +149,12 @@ See `firmware/src/main.cpp` for the skeleton.
 - LiPo → power board (5 V boost) → Pi 4; motors get their own regulated rail off
   the same pack (H-bridges draw spikes — decouple well, keep motor ground and
   logic ground joined at one star point).
-- **USB DAC** on a Pi USB port → 3.5 mm headphone jack (the HyperPixel's DPI
-  takes the I2S pins, so no GPIO DAC); optional PAM8302 + small speaker for a
-  built-in speaker. Pi USB budget: RP2040 + DAC = 2 of 4 ports.
+- **USB DAC** on a Pi USB port (the HyperPixel's DPI takes the I2S pins, so no
+  GPIO DAC) → line out → **switched headphone jack** → **TPA2016 stereo amp** →
+  internal enclosed speakers. Headphone insertion is sensed (MCP23017 input) and
+  firmware mutes the amp over I2C. Pi USB budget: RP2040 + DAC = 2 of 4 ports.
+- External outputs are **software**: Spotify Connect transfer for Sonos/Connect
+  gear (Web API `transfer_to`), and BT A2DP via the Pi 4's onboard Bluetooth.
 
 ## Enclosure
 

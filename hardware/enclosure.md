@@ -73,5 +73,33 @@ three facts that change the body:
 | Pico | 51 × 21 mm | `pico-datasheet.pdf` |
 | OLED module | ≈ 88 × 27.8 mm | NHD spec (verify) |
 
+## Speakers (added 2026-07-16 — standalone playback, headphones optional)
+
+- **Drivers**: enclosed stereo pair, **70 × 30 × 17 mm each** (sealed backs — no
+  custom acoustic chamber needed; they just bolt in). Fits the 32 mm depth.
+- **Placement**: side edges of the top module firing outward, or flanking the
+  screen — decide in CAD around the fader bank. Keep them away from the
+  HyperPixel's rear (magnet clearance) and off the fader axis (vibration).
+- **Grilles**: a drilled hole pattern looks *great* in anodized aluminum and is
+  trivially machinable (≥1.5 mm holes, ≥2× diameter spacing). The FDM version
+  prints the same pattern.
+- **Headphone jack**: panel-mount switched TRS; insertion detect → MCP23017
+  spare input → firmware mutes the TPA2016 over I2C. Jack near the bottom edge
+  (cable hangs naturally when handheld).
+- **Vibration**: mount drivers on thin foam gaskets so the aluminum panel
+  doesn't buzz at volume.
+- **Loudness upgrade slot (decided 2026-07-16)**: v1 ships the TPA2016; the CAD
+  reserves space for a **MAX9744 (I2C, same bus) + 5→12 V boost** and grille area
+  for ~2″/5 W drivers — the "small boombox" tier is a one-board swap after bench
+  listening, no redesign.
+
+## Knobs & finish
+
+- **Final build**: aluminum fader caps (T-bar or rectangular, for the ALPS 9-T
+  lever) + knurled aluminum encoder knobs, anodized to match or contrast the body.
+- **Prototype**: 3D-print the same knob geometry so the CAD is shared — print to
+  fit, then order/machine the aluminum versions from the identical model.
+- Fader caps must clear adjacent slots at 20 mm pitch — cap width ≤ 16 mm.
+
 Grab the **ALPS STEP model** from the product page when CAD starts — it's the
 part everything else packs around.

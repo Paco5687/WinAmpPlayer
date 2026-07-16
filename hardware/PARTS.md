@@ -29,9 +29,12 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 | Tactile buttons, 12 mm assortment | [1119](https://www.adafruit.com/product/1119) | 1 pk | 5.95 | 5.95 | 13 panel buttons |
 | NeoPixel Stick (8× WS2812) | [1426](https://www.adafruit.com/product/1426) | 1 | 5.95 | 5.95 | VU/status glow |
 | Slide potentiometer, 45 mm | [4271](https://www.adafruit.com/product/4271) | 1 | 1.95 | 1.95 | balance |
+| **Stereo 2.8 W Class-D amp, I2C AGC (TPA2016)** ✓ | [1712](https://www.adafruit.com/product/1712) | 1 | 9.95 | 9.95 | internal speakers (on the RP2040 I2C bus) |
+| **Enclosed stereo speaker set, 3 W 4 Ω** ✓ | [1669](https://www.adafruit.com/product/1669) | 1 | 7.50 | 7.50 | 70×30×17 mm each, sealed backs — ⚠️ out of stock at check (notify list; alt: 2× mono enclosed [3351](https://www.adafruit.com/product/3351)) |
+| Switched 3.5 mm stereo jack (headphone detect) | generic panel-mount TRS w/ switch | 1 | 2 | 2.00 | headphones optional — insert mutes the amp |
 | Perma-Proto half-size ×3 | [571](https://www.adafruit.com/product/571) | 1 pk | 12.50 | 12.50 | interconnect boards |
 | Hook-up wire, JST kits, headers | misc | — | — | ~15 | wiring |
-| **Adafruit subtotal** | | | | **≈ 128** | |
+| **Adafruit subtotal** | | | | **≈ 148** | |
 
 > Adafruit doesn't stock: motorized faders, the SSD1322 OLED, the UPS, or bare
 > 18650 cells — those come from the vendors below.
@@ -78,17 +81,18 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 |---|---|
 | Electrolytic caps 2200 µF/10 V ×2, inline fuse + holder, rocker/slide power switch | 8 |
 | M2.5/M3 machine screws, standoffs, heat-set inserts (for the printed case) | 10 |
+| **Aluminum knobs** (final build): 11× fader caps + 2× knurled encoder knobs — 3D-printed on the prototype | 25–40 |
 
 ## Totals
 
 | | ~$ |
 |---|---|
-| Adafruit | 128 |
+| Adafruit (incl. amp + speakers) | 148 |
 | Faders (DigiKey) | 200–250 |
 | Power (Geekworm + cells) | 60 |
 | OLED | 22–38 |
 | Misc | 18 |
-| **New parts total** | **≈ 430–495** |
+| **New parts total** | **≈ 450–515** |
 
 (On top of the already-owned Pi/HyperPixel/SD ≈ $110 — consistent with the
 [BOM](BOM.md) estimate of $490–540 all-in.)

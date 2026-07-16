@@ -20,6 +20,9 @@ volume + motorized seek, single integrated body.
 | **Pimoroni HyperPixel 4.0 Square** (720×720, DPI, touch) | The center screen — a small square LCD showing a multi-view UI (now playing / playlists / queue). ⚠️ DPI uses **all 40 GPIO** — see notes below. | 55 |
 | **Amber OLED readout strip** (SSD1322, 256×64, SPI) | The retro top readout: elapsed time, scrolling title, mini-spectrum. Driven by the **RP2040** (`DISP` serial commands), not the Pi. | 25 |
 | **USB DAC** (e.g. Sabrent/generic) | Audio out. A GPIO I2S HAT can't be used (HyperPixel's DPI takes the I2S pins). Pi 3.5 mm jack works for early testing. | 15 |
+| **TPA2016 stereo 2.8 W Class-D amp** | Internal speakers. I2C gain/AGC/mute — rides the **RP2040 expander bus** (5th device). | 10 |
+| **Enclosed stereo speakers, 3 W 4 Ω** (70×30×17 mm ea.) | Sealed backs = no custom acoustic chamber. Standalone playback, no headphones needed. | 8 |
+| **Switched 3.5 mm headphone jack** | Insert detection (→ MCP23017 spare input) mutes the amp — headphones optional. | 2 |
 
 > **HyperPixel I/O note:** the HyperPixel's DPI interface consumes all 40 GPIO
 > pins (incl. standard I2C and I2S). That's fine here because everything else is on
@@ -85,13 +88,13 @@ faders, so this is a config change, not a rewrite.
 
 | Group | ~$ |
 |---|---|
-| Compute & display (incl. OLED readout) | 152 |
+| Compute & display & audio (incl. OLED, amp, speakers) | 172 |
 | Motorized faders + drivers + mux + I2C expanders | 213 |
 | Buttons/knobs/LEDs | 16 |
 | Power (UPS + 4×18650, see [power.md](power.md)) | 75 |
 | Body & misc | 35 |
-| **Total (full motorized build)** | **≈ 490–540** |
-| *Reduced (only volume+seek motorized, plain EQ pots)* | *≈ 340–370* |
+| **Total (full motorized build)** | **≈ 510–560** |
+| *Reduced (only volume+seek motorized, plain EQ pots)* | *≈ 360–390* |
 
 ## Sourcing notes
 

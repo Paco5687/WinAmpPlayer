@@ -24,8 +24,8 @@
     <rect x="398" y="154" width="14" height="14" fill="#565b64"/><text x="424" y="166" fill="#8a8f99">GP0</text><text x="384" y="166" fill="#565b64" text-anchor="end">spare (UART0 TX dbg)</text>
     <rect x="398" y="198" width="14" height="14" fill="#565b64"/><text x="424" y="210" fill="#8a8f99">GP1</text><text x="384" y="210" fill="#565b64" text-anchor="end">spare (UART0 RX dbg)</text>
     <rect x="398" y="242" width="14" height="14" fill="#33353b"/><text x="424" y="254" fill="#565b64">GND</text>
-    <rect x="398" y="286" width="14" height="14" fill="#565b64"/><text x="424" y="298" fill="#8a8f99">GP2</text><text x="384" y="298" fill="#565b64" text-anchor="end">spare</text>
-    <rect x="398" y="330" width="14" height="14" fill="#565b64"/><text x="424" y="342" fill="#8a8f99">GP3</text><text x="384" y="342" fill="#565b64" text-anchor="end">spare</text>
+    <rect x="398" y="286" width="14" height="14" fill="#d2d6de"/><text x="424" y="298" fill="#d2d6de">GP2</text><text x="384" y="298" fill="#d2d6de" text-anchor="end">X728 AC-loss / charge detect</text>
+    <rect x="398" y="330" width="14" height="14" fill="#ffbe3c"/><text x="424" y="342" fill="#d2d6de">GP3</text><text x="384" y="342" fill="#ffbe3c" text-anchor="end">PCA9685 /OE — motors off at boot</text>
     <rect x="398" y="374" width="14" height="14" fill="#b06cff"/><text x="424" y="386" fill="#d2d6de">GP4</text><text x="384" y="386" fill="#b06cff" text-anchor="end">I2C0 SDA — PCA9685 ×2 · MPR121 · MCP23017</text>
     <rect x="398" y="418" width="14" height="14" fill="#b06cff"/><text x="424" y="430" fill="#d2d6de">GP5</text><text x="384" y="430" fill="#b06cff" text-anchor="end">I2C0 SCL</text>
     <rect x="398" y="462" width="14" height="14" fill="#33353b"/><text x="424" y="474" fill="#565b64">GND</text>
@@ -67,6 +67,6 @@
     <rect x="588" y="990" width="14" height="14" fill="#d2d6de"/><text x="576" y="1002" fill="#d2d6de" text-anchor="end">GP16</text><text x="616" y="1002" fill="#d2d6de">ENC1 A</text>
   </g>
 
-  <text x="40" y="1054" fill="#d2d6de" font-size="13" font-weight="bold">19 of 26 GPIO used · spare: GP0–GP3, GP15, GP27, GP28</text>
+  <text x="40" y="1054" fill="#d2d6de" font-size="13" font-weight="bold">21 of 26 GPIO used · spare: GP0/GP1 (UART dbg), GP15, GP27, GP28 (battery-divider fallback)</text>
   <text x="500" y="1054" fill="#8a8f99" font-size="12">Everything high-count (20 motor PWM, 10 touch, 13 buttons) rides the I2C bus — see system-wiring.svg</text>
 </svg>

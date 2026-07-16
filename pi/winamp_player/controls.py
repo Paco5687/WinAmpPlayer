@@ -26,6 +26,9 @@ class ControlEventType(Enum):
     TOUCH = "TOUCH"    # id, touched(0/1) — user grabbed a motorized fader
     ENCODER = "ENC"    # id, delta(int)
     POT = "POT"        # id, value(0..1023)
+    BATTERY = "BAT"    # 0, state-of-charge ×10 (0..1000) from the X728 gauge
+    CHARGING = "CHG"   # 0, on-AC/charging(0/1)
+    JACK = "JACK"      # 0, headphones inserted(0/1) — firmware mutes the amp
 
 
 # Stable control ids. Faders are the motorized ones the Pi commands back.
@@ -58,6 +61,9 @@ class ButtonId(Enum):
     VIEW_QUEUE = 11
     # Cycles EQ presets — the faders physically animate into each curve.
     EQ_PRESET = 12
+    # Rotary-encoder push switches (wired to the Pico directly, not the MCP).
+    ENC1_PUSH = 13
+    ENC2_PUSH = 14
 
 
 class PotId(Enum):

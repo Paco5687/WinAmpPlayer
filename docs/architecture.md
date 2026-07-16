@@ -31,14 +31,20 @@ if its ecosystem matures — it could collapse both boards into one.
 ## Audio path
 
 ```
-Spotify ──▶ go-librespot ──▶ ALSA (software graphic EQ) ──▶ USB DAC ──▶ headphones/speaker
-                                    ▲                  │
-                          EQ gains from faders    audio tap ──▶ FFT ──▶ spectrum bars (UI)
+Spotify ──▶ go-librespot ──▶ ALSA (software graphic EQ) ──▶ USB DAC ──▶ switched 3.5mm jack
+                                    ▲                  │                     │ (no plug)
+                          EQ gains from faders         │              TPA2016 amp ──▶ internal
+                                                       │             (I2C, RP2040 bus)  speakers
+                                          audio tap ──▶ FFT ──▶ spectrum bars (UI)
 ```
 
 > The DAC is **USB** (not a GPIO I2S HAT) because the HyperPixel display's DPI
 > interface consumes all 40 GPIO pins, including I2S. The Pi's 3.5 mm jack works
-> for bring-up.
+> for bring-up. **Standalone playback** comes from internal enclosed speakers via
+> a TPA2016 Class-D amp; inserting headphones mutes the amp (jack detect →
+> firmware). External outputs are software: **Spotify Connect transfer** (Sonos &
+> co. via the Web API — no audio plumbing) and **Bluetooth A2DP** from the Pi 4's
+> onboard radio.
 
 - **go-librespot** is a full Spotify client that streams and decodes audio
   directly (requires Premium). It authenticates **standalone via interactive

@@ -57,8 +57,17 @@ def test_disp_commands_are_single_line():
 
 
 def test_button_ids_cover_the_panel():
-    """The physical panel needs ids for every scoped button (0..12)."""
+    """Panel buttons 0..12 plus the two encoder pushes (13/14)."""
     from winamp_player.controls import ButtonId, PotId
 
-    assert {b.value for b in ButtonId} == set(range(13))
+    assert {b.value for b in ButtonId} == set(range(15))
     assert PotId.BALANCE.value == 0
+
+
+def test_parse_battery_and_jack_events():
+    from winamp_player.controls import ControlEventType
+
+    assert parse_event("EV BAT 0 725").type is ControlEventType.BATTERY
+    assert parse_event("EV BAT 0 725").value == 725
+    assert parse_event("EV CHG 0 1").type is ControlEventType.CHARGING
+    assert parse_event("EV JACK 0 1").type is ControlEventType.JACK
