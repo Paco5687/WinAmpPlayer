@@ -175,10 +175,11 @@ class ScreenUI:
             thumb = Rect(row.x + 6, row.y + 6, row.h - 12, row.h - 12)
             self._blit_art(getattr(pl, "image_url", None), thumb, "♫")
             tx = thumb.x + thumb.w + 14
-            owned = getattr(pl, "owned", True)
-            self.surface.blit(self.f_body.render(_ellipsize(pl.name, 30), True,
-                              skin.TEXT if owned else skin.TEXT_DIM), (tx, row.y + 10))
-            sub = f"{pl.track_count} tracks" if owned else "tap to play · no tracklist"
+            self.surface.blit(self.f_body.render(_ellipsize(pl.name, 30), True, skin.TEXT),
+                              (tx, row.y + 10))
+            # Dev Mode strips track counts from /me/playlists, so show a hint
+            # instead of a bogus "0 tracks".
+            sub = f"{pl.track_count} tracks" if pl.track_count else "tap to play"
             self.surface.blit(self.f_small.render(sub, True, skin.TEXT_DIM), (tx, row.y + 32))
 
     # -- Queue ----------------------------------------------------------- #

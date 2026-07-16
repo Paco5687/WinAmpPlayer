@@ -125,26 +125,18 @@ class App:
     # library browsing
     # ------------------------------------------------------------------ #
     def _open_playlist(self, index: int) -> None:
-        if not self.library or not (0 <= index < len(self.browse.playlists)):
+        if not (0 <= index < len(self.browse.playlists)):
             return
         pl = self.browse.playlists[index]
         self.browse.current_playlist = pl.name
-        self.browse.note = ""
-        if pl.owned:
-            # We can read the tracklist (Dev Mode allows owned/collaborative).
-            self.library.open_playlist(pl)          # async -> 'tracks' event
-        elif getattr(self.backend, "real_playback", False):
-            # Can't read the tracklist, but we *can* play it by context URI.
-            self.browse.view = "playlist"
-            self.backend.state.playlist = []
-            if not self.backend.play_context(pl.uri):
-                self.browse.note = self._device_hint()
-        else:
-            self.browse.view = "playlist"
-            self.backend.state.playlist = []
-            self.backend.state.track = Track()
-            self.browse.note = ("Followed playlists need real playback — set "
-                                "backend = \"webapi\" in config.toml and open Spotify.")
+        if getattr(self.backend, "real_playback", False):
+            # Play the playlist directly on the device — works for owned AND
+            # followed playlists (no tracklist read needed; the Up Next view
+            # shows the live queue). This is the on-device path.
+            self.backend.play_context(pl.uri)
+        elif self.library and pl.owned:
+            # Mock/dev: load the tracklist so there's something to simulate.
+            self.library.open_playlist(pl)
 
     def _device_hint(self) -> str:
         err = getattr(self.backend, "last_error", "")
