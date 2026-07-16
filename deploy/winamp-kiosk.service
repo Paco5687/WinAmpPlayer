@@ -1,0 +1,25 @@
+# systemd USER service that autostarts the WinAmp UI on boot (kiosk).
+# The launcher waits for the Wayland compositor, so this is robust to boot timing.
+# Restart=on-failure keeps it up if it crashes, but a clean q/Esc exit does NOT
+# restart (your escape hatch).
+#
+# Install (as the pi user, not root):
+#   mkdir -p ~/.config/systemd/user
+#   cp deploy/winamp-kiosk.service ~/.config/systemd/user/
+#   cp deploy/winamp-kiosk.sh ~/.config/winamp-kiosk.sh && chmod +x ~/.config/winamp-kiosk.sh
+#   sudo loginctl enable-linger "$USER"      # start the user manager at boot
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now winamp-kiosk.service
+
+[Unit]
+Description=WinAmp Physical Edition kiosk UI
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/home/bkern/.config/winamp-kiosk.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

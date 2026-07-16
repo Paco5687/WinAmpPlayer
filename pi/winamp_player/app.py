@@ -42,6 +42,8 @@ class App:
         pygame.display.set_caption("WinAmp · Physical Edition")
         flags = pygame.FULLSCREEN if cfg.fullscreen else 0
         self.surface = pygame.display.set_mode(cfg.window_size, flags)
+        if cfg.fullscreen:
+            pygame.mouse.set_visible(False)   # touch kiosk — no cursor
         self.clock = pygame.time.Clock()
 
         # One shared Web API client feeds both playback (webapi backend) and browsing.
