@@ -72,7 +72,7 @@ faders, so this is a config change, not a rewrite.
 
 | Part | Notes | ~$ |
 |---|---|---|
-| 3D-printed enclosure (book form, ~200×127×25 mm) | PETG/ABS. See [wiring.md](wiring.md) for layout. | 15 |
+| 3D-printed enclosure (book form, ~210×127×25 mm — see the height finding in wiring.md) | PETG/ABS. See [wiring.md](wiring.md) for layout. | 15 |
 | Fader knob caps, standoffs, JST wiring, protoboard/PCB | | 20 |
 
 ## Rough total

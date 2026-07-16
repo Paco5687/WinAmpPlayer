@@ -1,0 +1,72 @@
+<svg viewBox="0 0 1000 1080" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <title>RP2040 Pico pin assignments</title>
+  <rect width="1000" height="1080" fill="#1c1e22"/>
+  <text x="40" y="42" fill="#2cff78" font-size="22" font-weight="bold">RP2040 (PICO) — PIN ASSIGNMENTS</text>
+  <g font-size="12">
+    <rect x="620" y="24" width="12" height="12" fill="#b06cff"/><text x="638" y="34" fill="#d2d6de">I2C</text>
+    <rect x="690" y="24" width="12" height="12" fill="#5c9dff"/><text x="708" y="34" fill="#d2d6de">SPI/OLED</text>
+    <rect x="790" y="24" width="12" height="12" fill="#2cff78"/><text x="808" y="34" fill="#d2d6de">analog</text>
+    <rect x="620" y="44" width="12" height="12" fill="#ffbe3c"/><text x="638" y="54" fill="#d2d6de">PIO/LED</text>
+    <rect x="690" y="44" width="12" height="12" fill="#d2d6de"/><text x="708" y="54" fill="#d2d6de">digital</text>
+    <rect x="790" y="44" width="12" height="12" fill="#565b64"/><text x="808" y="54" fill="#d2d6de">spare / GND</text>
+  </g>
+
+  <!-- board -->
+  <rect x="410" y="120" width="180" height="900" rx="10" fill="#26282e" stroke="#8a8f99" stroke-width="2"/>
+  <rect x="470" y="96" width="60" height="34" fill="#3a3d45" stroke="#8a8f99"/>
+  <text x="500" y="118" fill="#8a8f99" font-size="11" text-anchor="middle">USB → Pi</text>
+  <text x="500" y="560" fill="#565b64" font-size="26" text-anchor="middle" transform="rotate(-90 500 560)">Raspberry Pi Pico</text>
+
+  <!-- ============ LEFT PINS (1–20) ============ -->
+  <!-- rows: y = 160 + i*44 -->
+  <g font-size="13">
+    <!-- pin squares -->
+    <rect x="398" y="154" width="14" height="14" fill="#565b64"/><text x="424" y="166" fill="#8a8f99">GP0</text><text x="384" y="166" fill="#565b64" text-anchor="end">spare (UART0 TX dbg)</text>
+    <rect x="398" y="198" width="14" height="14" fill="#565b64"/><text x="424" y="210" fill="#8a8f99">GP1</text><text x="384" y="210" fill="#565b64" text-anchor="end">spare (UART0 RX dbg)</text>
+    <rect x="398" y="242" width="14" height="14" fill="#33353b"/><text x="424" y="254" fill="#565b64">GND</text>
+    <rect x="398" y="286" width="14" height="14" fill="#565b64"/><text x="424" y="298" fill="#8a8f99">GP2</text><text x="384" y="298" fill="#565b64" text-anchor="end">spare</text>
+    <rect x="398" y="330" width="14" height="14" fill="#565b64"/><text x="424" y="342" fill="#8a8f99">GP3</text><text x="384" y="342" fill="#565b64" text-anchor="end">spare</text>
+    <rect x="398" y="374" width="14" height="14" fill="#b06cff"/><text x="424" y="386" fill="#d2d6de">GP4</text><text x="384" y="386" fill="#b06cff" text-anchor="end">I2C0 SDA — PCA9685 ×2 · MPR121 · MCP23017</text>
+    <rect x="398" y="418" width="14" height="14" fill="#b06cff"/><text x="424" y="430" fill="#d2d6de">GP5</text><text x="384" y="430" fill="#b06cff" text-anchor="end">I2C0 SCL</text>
+    <rect x="398" y="462" width="14" height="14" fill="#33353b"/><text x="424" y="474" fill="#565b64">GND</text>
+    <rect x="398" y="506" width="14" height="14" fill="#2cff78"/><text x="424" y="518" fill="#d2d6de">GP6</text><text x="384" y="518" fill="#2cff78" text-anchor="end">MUX S0</text>
+    <rect x="398" y="550" width="14" height="14" fill="#2cff78"/><text x="424" y="562" fill="#d2d6de">GP7</text><text x="384" y="562" fill="#2cff78" text-anchor="end">MUX S1</text>
+    <rect x="398" y="594" width="14" height="14" fill="#2cff78"/><text x="424" y="606" fill="#d2d6de">GP8</text><text x="384" y="606" fill="#2cff78" text-anchor="end">MUX S2</text>
+    <rect x="398" y="638" width="14" height="14" fill="#2cff78"/><text x="424" y="650" fill="#d2d6de">GP9</text><text x="384" y="650" fill="#2cff78" text-anchor="end">MUX S3</text>
+    <rect x="398" y="682" width="14" height="14" fill="#33353b"/><text x="424" y="694" fill="#565b64">GND</text>
+    <rect x="398" y="726" width="14" height="14" fill="#5c9dff"/><text x="424" y="738" fill="#d2d6de">GP10</text><text x="384" y="738" fill="#5c9dff" text-anchor="end">OLED SCK (SPI1)</text>
+    <rect x="398" y="770" width="14" height="14" fill="#5c9dff"/><text x="424" y="782" fill="#d2d6de">GP11</text><text x="384" y="782" fill="#5c9dff" text-anchor="end">OLED MOSI</text>
+    <rect x="398" y="814" width="14" height="14" fill="#5c9dff"/><text x="424" y="826" fill="#d2d6de">GP12</text><text x="384" y="826" fill="#5c9dff" text-anchor="end">OLED DC</text>
+    <rect x="398" y="858" width="14" height="14" fill="#5c9dff"/><text x="424" y="870" fill="#d2d6de">GP13</text><text x="384" y="870" fill="#5c9dff" text-anchor="end">OLED CS</text>
+    <rect x="398" y="902" width="14" height="14" fill="#33353b"/><text x="424" y="914" fill="#565b64">GND</text>
+    <rect x="398" y="946" width="14" height="14" fill="#5c9dff"/><text x="424" y="958" fill="#d2d6de">GP14</text><text x="384" y="958" fill="#5c9dff" text-anchor="end">OLED RST</text>
+    <rect x="398" y="990" width="14" height="14" fill="#565b64"/><text x="424" y="1002" fill="#8a8f99">GP15</text><text x="384" y="1002" fill="#565b64" text-anchor="end">spare</text>
+  </g>
+
+  <!-- ============ RIGHT PINS (40–21) ============ -->
+  <g font-size="13">
+    <rect x="588" y="154" width="14" height="14" fill="#ff5c5c"/><text x="576" y="166" fill="#d2d6de" text-anchor="end">VBUS</text><text x="616" y="166" fill="#ff5c5c">5 V from Pi USB</text>
+    <rect x="588" y="198" width="14" height="14" fill="#ff5c5c"/><text x="576" y="210" fill="#d2d6de" text-anchor="end">VSYS</text><text x="616" y="210" fill="#565b64">—</text>
+    <rect x="588" y="242" width="14" height="14" fill="#33353b"/><text x="576" y="254" fill="#565b64" text-anchor="end">GND</text>
+    <rect x="588" y="286" width="14" height="14" fill="#565b64"/><text x="576" y="298" fill="#8a8f99" text-anchor="end">3V3_EN</text><text x="616" y="298" fill="#565b64">—</text>
+    <rect x="588" y="330" width="14" height="14" fill="#ff5c5c"/><text x="576" y="342" fill="#d2d6de" text-anchor="end">3V3</text><text x="616" y="342" fill="#ff5c5c">→ mux, MPR121, MCP23017, PCA9685 logic</text>
+    <rect x="588" y="374" width="14" height="14" fill="#565b64"/><text x="576" y="386" fill="#8a8f99" text-anchor="end">ADC_VREF</text><text x="616" y="386" fill="#565b64">—</text>
+    <rect x="588" y="418" width="14" height="14" fill="#565b64"/><text x="576" y="430" fill="#8a8f99" text-anchor="end">GP28</text><text x="616" y="430" fill="#565b64">spare (ADC2 — battery divider option)</text>
+    <rect x="588" y="462" width="14" height="14" fill="#33353b"/><text x="576" y="474" fill="#565b64" text-anchor="end">AGND</text>
+    <rect x="588" y="506" width="14" height="14" fill="#565b64"/><text x="576" y="518" fill="#8a8f99" text-anchor="end">GP27</text><text x="616" y="518" fill="#565b64">spare (ADC1)</text>
+    <rect x="588" y="550" width="14" height="14" fill="#2cff78"/><text x="576" y="562" fill="#d2d6de" text-anchor="end">GP26</text><text x="616" y="562" fill="#2cff78">ADC0 ← mux common (wipers + balance)</text>
+    <rect x="588" y="594" width="14" height="14" fill="#565b64"/><text x="576" y="606" fill="#8a8f99" text-anchor="end">RUN</text><text x="616" y="606" fill="#565b64">reset (optional tact switch)</text>
+    <rect x="588" y="638" width="14" height="14" fill="#ffbe3c"/><text x="576" y="650" fill="#d2d6de" text-anchor="end">GP22</text><text x="616" y="650" fill="#ffbe3c">WS2812 VU/status LEDs (PIO)</text>
+    <rect x="588" y="682" width="14" height="14" fill="#33353b"/><text x="576" y="694" fill="#565b64" text-anchor="end">GND</text>
+    <rect x="588" y="726" width="14" height="14" fill="#d2d6de"/><text x="576" y="738" fill="#d2d6de" text-anchor="end">GP21</text><text x="616" y="738" fill="#d2d6de">ENC2 push</text>
+    <rect x="588" y="770" width="14" height="14" fill="#d2d6de"/><text x="576" y="782" fill="#d2d6de" text-anchor="end">GP20</text><text x="616" y="782" fill="#d2d6de">ENC2 B</text>
+    <rect x="588" y="814" width="14" height="14" fill="#d2d6de"/><text x="576" y="826" fill="#d2d6de" text-anchor="end">GP19</text><text x="616" y="826" fill="#d2d6de">ENC2 A</text>
+    <rect x="588" y="858" width="14" height="14" fill="#d2d6de"/><text x="576" y="870" fill="#d2d6de" text-anchor="end">GP18</text><text x="616" y="870" fill="#d2d6de">ENC1 push</text>
+    <rect x="588" y="902" width="14" height="14" fill="#d2d6de"/><text x="576" y="914" fill="#d2d6de" text-anchor="end">GP17</text><text x="616" y="914" fill="#d2d6de">ENC1 B</text>
+    <rect x="588" y="946" width="14" height="14" fill="#33353b"/><text x="576" y="958" fill="#565b64" text-anchor="end">GND</text>
+    <rect x="588" y="990" width="14" height="14" fill="#d2d6de"/><text x="576" y="1002" fill="#d2d6de" text-anchor="end">GP16</text><text x="616" y="1002" fill="#d2d6de">ENC1 A</text>
+  </g>
+
+  <text x="40" y="1054" fill="#d2d6de" font-size="13" font-weight="bold">19 of 26 GPIO used · spare: GP0–GP3, GP15, GP27, GP28</text>
+  <text x="500" y="1054" fill="#8a8f99" font-size="12">Everything high-count (20 motor PWM, 10 touch, 13 buttons) rides the I2C bus — see system-wiring.svg</text>
+</svg>

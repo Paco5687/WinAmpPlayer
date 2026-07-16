@@ -1,8 +1,27 @@
 # Wiring & physical layout
 
-## Front-panel layout (portrait, ≈127 mm wide × 200 mm tall)
+## Schematics
 
-Mirrors the Pygame mock's regions so the software and the hardware agree:
+| Diagram | What it shows |
+|---|---|
+| [**System wiring**](diagrams/system-wiring.svg) | Full power + data topology: battery → UPS → Pi/motor rail; USB to the RP2040 + DAC; the I2C expander bus (PCA9685/MPR121/MCP23017) out to the faders |
+| [**Pico pinout**](diagrams/pico-pinout.svg) | Every RP2040 pin assignment (19 of 26 used, spares marked) |
+| [**Front panel**](diagrams/front-panel.svg) | To-scale (4 px/mm) control layout with dimensions — includes the 210 mm height finding |
+
+![System wiring](diagrams/system-wiring.svg)
+
+![Pico pinout](diagrams/pico-pinout.svg)
+
+![Front panel](diagrams/front-panel.svg)
+
+> ⚠️ **Height finding** (from drawing the panel to scale): 60 mm fader travel
+> pushes the body to **~210 mm (8.3″)**, not the original 200 mm. Alternatives if
+> 200 mm is a hard limit: 45 mm-travel EQ faders (rare in motorized) or a tighter
+> screen bezel. Decide in CAD (Phase 8).
+
+## Front-panel layout (ASCII summary, portrait ≈127 × 210 mm)
+
+Mirrors the software's regions so the code and the hardware agree:
 
 ```
 ┌───────────────────────────────────────────┐  ← ~127 mm wide

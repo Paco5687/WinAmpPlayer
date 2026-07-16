@@ -1,0 +1,103 @@
+<svg viewBox="0 0 1010 1080" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <title>Front panel layout — to scale (4 px per mm)</title>
+  <rect width="1010" height="1080" fill="#1c1e22"/>
+  <text x="40" y="42" fill="#2cff78" font-size="22" font-weight="bold">FRONT PANEL — TO SCALE (4 px = 1 mm)</text>
+  <text x="40" y="66" fill="#ffbe3c" font-size="13">⚠ Finding: 60 mm fader travel forces the body to ~210 mm tall (8.3″), not the original 200 mm — see note at bottom.</text>
+
+  <!-- dimension: width -->
+  <line x1="150" y1="96" x2="658" y2="96" stroke="#8a8f99"/>
+  <line x1="150" y1="90" x2="150" y2="102" stroke="#8a8f99"/>
+  <line x1="658" y1="90" x2="658" y2="102" stroke="#8a8f99"/>
+  <text x="404" y="90" fill="#8a8f99" font-size="13" text-anchor="middle">127 mm (5.0″)</text>
+
+  <!-- dimension: height -->
+  <line x1="126" y1="110" x2="126" y2="950" stroke="#8a8f99"/>
+  <line x1="120" y1="110" x2="132" y2="110" stroke="#8a8f99"/>
+  <line x1="120" y1="950" x2="132" y2="950" stroke="#8a8f99"/>
+  <text x="112" y="534" fill="#8a8f99" font-size="13" text-anchor="middle" transform="rotate(-90 112 534)">210 mm (8.3″)</text>
+
+  <!-- panel -->
+  <rect x="150" y="110" width="508" height="840" rx="10" fill="#26282e" stroke="#8a8f99" stroke-width="2"/>
+
+  <!-- ===== top module ===== -->
+  <rect x="182" y="130" width="312" height="80" rx="4" fill="#0f1410" stroke="#ffbe3c" stroke-width="2"/>
+  <text x="338" y="164" fill="#ffbe3c" font-size="15" text-anchor="middle">0:42  M83 - MIDNIGHT CITY</text>
+  <text x="338" y="192" fill="#7a5a1e" font-size="12" text-anchor="middle">▂▄▆█▆▄▂▁▃▅▇▅▃  320kbps 44kHz</text>
+  <text x="338" y="226" fill="#565b64" font-size="10" text-anchor="middle">SSD1322 OLED 256×64 (78×20 mm)</text>
+
+  <g font-size="11" fill="#d2d6de">
+    <rect x="518" y="130" width="120" height="32" rx="4" fill="#33353b" stroke="#8a8f99"/><text x="578" y="151" text-anchor="middle">SHUFFLE</text>
+    <rect x="518" y="174" width="120" height="32" rx="4" fill="#33353b" stroke="#8a8f99"/><text x="578" y="195" text-anchor="middle">LOOP</text>
+    <rect x="518" y="218" width="120" height="32" rx="4" fill="#33353b" stroke="#ffbe3c"/><text x="578" y="239" text-anchor="middle" fill="#ffbe3c">EQ PRESET</text>
+  </g>
+
+  <!-- transport -->
+  <g fill="#33353b" stroke="#8a8f99">
+    <circle cx="206" cy="246" r="16"/><circle cx="258" cy="246" r="16"/><circle cx="310" cy="246" r="16"/><circle cx="362" cy="246" r="16"/><circle cx="414" cy="246" r="16"/>
+  </g>
+  <g font-size="11" fill="#2cff78" text-anchor="middle">
+    <text x="206" y="250">|◀</text><text x="258" y="250">▶</text><text x="310" y="250">▮▮</text><text x="362" y="250">■</text><text x="414" y="250">▶|</text>
+  </g>
+  <text x="456" y="250" fill="#565b64" font-size="10">12 mm tactile ×5</text>
+
+  <!-- volume + balance -->
+  <rect x="182" y="274" width="288" height="16" rx="6" fill="#0f1410" stroke="#8a8f99"/>
+  <rect x="300" y="268" width="20" height="28" rx="3" fill="#ffbe3c"/>
+  <text x="182" y="312" fill="#565b64" font-size="10">VOLUME — motorized, 60 mm travel</text>
+  <rect x="510" y="276" width="128" height="12" rx="5" fill="#0f1410" stroke="#8a8f99"/>
+  <rect x="566" y="271" width="14" height="22" rx="3" fill="#8a8f99"/>
+  <text x="510" y="312" fill="#565b64" font-size="10">BALANCE (pot)</text>
+
+  <!-- ===== view buttons ===== -->
+  <g font-size="12" fill="#2cff78" text-anchor="middle">
+    <rect x="222" y="322" width="104" height="26" rx="5" fill="#33353b" stroke="#2cff78"/><text x="274" y="340">NOW PLAYING</text>
+    <rect x="350" y="322" width="104" height="26" rx="5" fill="#33353b" stroke="#8a8f99"/><text x="402" y="340" fill="#d2d6de">PLAYLISTS</text>
+    <rect x="478" y="322" width="104" height="26" rx="5" fill="#33353b" stroke="#8a8f99"/><text x="530" y="340" fill="#d2d6de">QUEUE</text>
+  </g>
+
+  <!-- ===== screen ===== -->
+  <rect x="230" y="358" width="348" height="304" rx="6" fill="#111318" stroke="#8a8f99"/>
+  <rect x="260" y="366" width="288" height="288" fill="#0c2416" stroke="#2cff78" stroke-width="2"/>
+  <text x="404" y="500" fill="#2cff78" font-size="15" text-anchor="middle">HyperPixel 4.0 Square</text>
+  <text x="404" y="522" fill="#8a8f99" font-size="12" text-anchor="middle">720×720 · active 72×72 mm</text>
+  <text x="404" y="542" fill="#8a8f99" font-size="12" text-anchor="middle">multi-view UI · touch</text>
+
+  <!-- ===== seek ===== -->
+  <rect x="182" y="678" width="444" height="16" rx="6" fill="#0f1410" stroke="#8a8f99"/>
+  <rect x="330" y="672" width="20" height="28" rx="3" fill="#ffbe3c"/>
+  <text x="182" y="716" fill="#565b64" font-size="10">SEEK — motorized, physically tracks song position</text>
+
+  <!-- ===== EQ bank ===== -->
+  <g font-size="10" fill="#565b64" text-anchor="middle">
+    <text x="194" y="740">60</text><text x="254" y="740">150</text><text x="314" y="740">400</text><text x="374" y="740">1k</text>
+    <text x="434" y="740">2k4</text><text x="494" y="740">6k</text><text x="554" y="740">15k</text><text x="614" y="740" fill="#ffbe3c">PRE</text>
+  </g>
+  <g fill="#0f1410" stroke="#8a8f99">
+    <rect x="188" y="746" width="12" height="184" rx="5"/><rect x="248" y="746" width="12" height="184" rx="5"/>
+    <rect x="308" y="746" width="12" height="184" rx="5"/><rect x="368" y="746" width="12" height="184" rx="5"/>
+    <rect x="428" y="746" width="12" height="184" rx="5"/><rect x="488" y="746" width="12" height="184" rx="5"/>
+    <rect x="548" y="746" width="12" height="184" rx="5"/><rect x="608" y="746" width="12" height="184" rx="5"/>
+  </g>
+  <g fill="#ff7a3c">
+    <rect x="180" y="820" width="28" height="16" rx="3"/><rect x="240" y="850" width="28" height="16" rx="3"/>
+    <rect x="300" y="862" width="28" height="16" rx="3"/><rect x="360" y="856" width="28" height="16" rx="3"/>
+    <rect x="420" y="844" width="28" height="16" rx="3"/><rect x="480" y="838" width="28" height="16" rx="3"/>
+    <rect x="540" y="826" width="28" height="16" rx="3"/><rect x="600" y="800" width="28" height="16" rx="3" fill="#ffbe3c"/>
+  </g>
+  <text x="404" y="944" fill="#565b64" font-size="10" text-anchor="middle">8× motorized 60 mm-travel faders (7 bands + preamp) · slot pitch 15 mm</text>
+
+  <!-- right-side section labels -->
+  <g font-size="11" fill="#8a8f99">
+    <line x1="672" y1="130" x2="672" y2="300" stroke="#565b64"/><text x="682" y="200">PHYSICAL — RP2040</text><text x="682" y="216" fill="#565b64">OLED · transport · vol/bal</text>
+    <line x1="672" y1="318" x2="672" y2="352" stroke="#565b64"/><text x="682" y="332">PHYSICAL — view buttons</text><text x="682" y="348" fill="#565b64">ButtonId 9–11</text>
+    <line x1="672" y1="358" x2="672" y2="662" stroke="#565b64"/><text x="682" y="500">SCREEN — Pi GPIO</text><text x="682" y="516" fill="#565b64">(HyperPixel owns header)</text>
+    <line x1="672" y1="672" x2="672" y2="700" stroke="#565b64"/><text x="682" y="690">PHYSICAL — seek</text>
+    <line x1="672" y1="730" x2="672" y2="936" stroke="#565b64"/><text x="682" y="826">PHYSICAL — EQ bank</text><text x="682" y="842" fill="#565b64">motors via PCA9685</text>
+  </g>
+
+  <!-- notes -->
+  <text x="40" y="990" fill="#d2d6de" font-size="13" font-weight="bold">Height finding:</text>
+  <text x="150" y="990" fill="#d2d6de" font-size="13">46 (top) + 8 (views) + 78 (screen) + 12 (seek) + 66 (EQ) = 210 mm. To keep 200 mm: 45 mm-travel EQ faders (rare in motorized) or tighter screen bezel.</text>
+  <text x="40" y="1014" fill="#8a8f99" font-size="12">Depth: ≥20 mm behind panel for fader motors → ~25 mm (1″) body holds. Kickstand on the EQ section per the concept.</text>
+  <text x="40" y="1038" fill="#8a8f99" font-size="12">Companion diagrams: system-wiring.svg (topology) · pico-pinout.svg (pins). Dimensions are design targets — verify in CAD before printing.</text>
+</svg>
