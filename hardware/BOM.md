@@ -4,6 +4,10 @@ Prices are rough USD, mid-2020s, single-unit hobby quantities. This is a
 **buildable** BOM for the full build you chose: motorized graphic EQ + motorized
 volume + motorized seek, single integrated body.
 
+> 🛒 **Ready to order?** [PARTS.md](PARTS.md) is the vendor shopping list (real
+> SKUs, Adafruit-first). Datasheets: [datasheets/](datasheets/). Case rules +
+> dimension findings: [enclosure.md](enclosure.md).
+
 > ⚠️ **Read the fader note first — it's the biggest cost and space driver.**
 
 ## Compute & display
@@ -42,9 +46,11 @@ Full build = **10 motorized faders**: 7 EQ + 1 preamp + 1 volume + 1 seek.
 > one 2-pin I2C bus, the budget closes with room for the OLED. Full pin map in
 > [wiring.md](wiring.md).
 
-**Why 7-band EQ, not 10:** ten 60 mm faders side-by-side need ~150 mm of width;
-the body is ~127 mm. Seven EQ + preamp (8 in the EQ bank) fit across the top;
-volume + seek mount horizontally on the bottom strip. See [wiring.md](wiring.md).
+**Why 7-band EQ, not 10:** eleven fader bodies (18.5 mm wide each, per the ALPS
+datasheet) would need ~220 mm of width. Seven EQ + preamp (8 in the bank) need
+~155 mm — which sets the body width at **~165 mm** (the original 127 mm/5″ target
+can't hold a motorized bank; options in [enclosure.md](enclosure.md)). Volume +
+seek mount horizontally. See [wiring.md](wiring.md).
 
 **Want to cut cost/scope?** Make only **volume + seek** motorized (2 faders) and
 use plain (non-motorized) slide pots for EQ. Saves ~$140 and most of the motor
@@ -72,7 +78,7 @@ faders, so this is a config change, not a rewrite.
 
 | Part | Notes | ~$ |
 |---|---|---|
-| 3D-printed enclosure (book form, ~210×127×25 mm — see the height finding in wiring.md) | PETG/ABS. See [wiring.md](wiring.md) for layout. | 15 |
+| Enclosure (book form, working envelope ~165×210×32 mm — see [enclosure.md](enclosure.md)) | FDM prototype (PETG/ABS), CNC anodized aluminum final. | 15+ |
 | Fader knob caps, standoffs, JST wiring, protoboard/PCB | | 20 |
 
 ## Rough total

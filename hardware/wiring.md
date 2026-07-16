@@ -14,10 +14,12 @@
 
 ![Front panel](diagrams/front-panel.svg)
 
-> ⚠️ **Height finding** (from drawing the panel to scale): 60 mm fader travel
-> pushes the body to **~210 mm (8.3″)**, not the original 200 mm. Alternatives if
-> 200 mm is a hard limit: 45 mm-travel EQ faders (rare in motorized) or a tighter
-> screen bezel. Decide in CAD (Phase 8).
+> ⚠️ **Dimension findings** (from the to-scale drawing + the ALPS datasheet):
+> 60 mm fader travel pushes the body to **~210 mm tall**; fader bodies are
+> **18.5 mm wide × 26 mm deep**, so the 8-fader bank needs **~155 mm of width**
+> and the body **~32 mm of depth** — working envelope is now **~165 × 210 × 32 mm
+> (6.5″ × 8.3″ × 1.25″)**. Full analysis + options: [enclosure.md](enclosure.md).
+> Finalize in CAD (Phase 8).
 
 ## Front-panel layout (ASCII summary, portrait ≈127 × 210 mm)
 

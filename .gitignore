@@ -40,3 +40,6 @@ firmware/.pioenvs/
 Thumbs.db
 .vscode/
 .idea/
+
+# Manufacturer datasheets (copyright) — fetch locally via hardware/datasheets/fetch.sh
+hardware/datasheets/*.pdf

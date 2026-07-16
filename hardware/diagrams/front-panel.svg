@@ -2,7 +2,8 @@
   <title>Front panel layout — to scale (4 px per mm)</title>
   <rect width="1010" height="1080" fill="#1c1e22"/>
   <text x="40" y="42" fill="#2cff78" font-size="22" font-weight="bold">FRONT PANEL — TO SCALE (4 px = 1 mm)</text>
-  <text x="40" y="66" fill="#ffbe3c" font-size="13">⚠ Finding: 60 mm fader travel forces the body to ~210 mm tall (8.3″), not the original 200 mm — see note at bottom.</text>
+  <text x="40" y="60" fill="#ffbe3c" font-size="13">⚠ Findings: 60 mm fader travel forces ~210 mm height; and the ALPS datasheet puts fader bodies at 18.5 mm wide —</text>
+  <text x="40" y="78" fill="#ffbe3c" font-size="13">the 8-fader bank shown at 15 mm pitch actually needs ~155 mm, so the body widens to ~165 mm (6.5″). See enclosure.md.</text>
 
   <!-- dimension: width -->
   <line x1="150" y1="96" x2="658" y2="96" stroke="#8a8f99"/>
