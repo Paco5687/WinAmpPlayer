@@ -11,6 +11,8 @@ Responsibilities:
 from __future__ import annotations
 
 import sys
+import threading
+import time
 
 import pygame
 
@@ -67,6 +69,19 @@ class App:
         self._grabbed: set[int] = set()      # fader ids the user is touching
         self._last_sent: dict[int, int] = {}  # last target per fader (avoid spam)
         self.running = True
+
+        # Populate the Up Next view for backends that don't fetch the queue
+        # themselves (e.g. librespot) — poll the Web API queue off-thread.
+        if self.web is not None and not getattr(self.backend, "populates_queue", False):
+            threading.Thread(target=self._queue_loop, daemon=True).start()
+
+    def _queue_loop(self) -> None:
+        while self.running:
+            try:
+                self.backend.state.queue = self.web.queue()
+            except Exception:  # noqa: BLE001
+                pass
+            time.sleep(4.0)
 
     # ------------------------------------------------------------------ #
     # action routing (shared by mouse UI and physical controls)

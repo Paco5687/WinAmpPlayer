@@ -181,6 +181,9 @@ class LibrespotPlayer:
         self._requests = requests
         self._base = base_url.rstrip("/")
         self.state = PlayerState()
+        self._last_tick = time.monotonic()
+        self._last_fetch = 0.0
+        self._vol_steps = 100        # go-librespot default; updated from /status
 
     def _post(self, path: str, json: dict | None = None) -> None:
         try:
@@ -189,6 +192,16 @@ class LibrespotPlayer:
             pass
 
     def poll(self) -> None:
+        # Advance the position locally for a smooth progress bar; resync to the
+        # daemon a few times a second (localhost, but no need to hammer it).
+        now = time.monotonic()
+        dt = now - self._last_tick
+        self._last_tick = now
+        if self.state.is_playing:
+            self.state.position_ms += int(dt * 1000)
+        if now - self._last_fetch < 0.3:
+            return
+        self._last_fetch = now
         try:
             r = self._requests.get(f"{self._base}/status", timeout=1.0)
             self._apply_status(r.json())
@@ -205,8 +218,10 @@ class LibrespotPlayer:
             uri=track.get("uri"),
             art_url=track.get("album_cover_url"),
         )
-        self.state.position_ms = int(s.get("position", 0))
-        self.state.volume = float(s.get("volume", 65535)) / 65535.0
+        self.state.position_ms = int(track.get("position", 0))   # live pos is on the track
+        self._vol_steps = int(s.get("volume_steps") or 100) or 100
+        self.state.volume = float(s.get("volume", self._vol_steps)) / self._vol_steps
+        self.state.shuffle = bool(s.get("shuffle_context", self.state.shuffle))
         paused = s.get("paused", True)
         stopped = s.get("stopped", False)
         self.state.status = (
@@ -220,9 +235,12 @@ class LibrespotPlayer:
     def stop(self) -> None: self._post("/player/pause")
     def next(self) -> None: self._post("/player/next")
     def prev(self) -> None: self._post("/player/prev")
-    def seek(self, position_ms: int) -> None: self._post("/player/seek", {"position": position_ms})
+    def seek(self, position_ms: int) -> None:
+        self.state.position_ms = max(0, position_ms)
+        self._post("/player/seek", {"position": int(position_ms)})
     def set_volume(self, volume: float) -> None:
-        self._post("/player/volume", {"volume": int(volume * 65535)})
+        self.state.volume = max(0.0, min(1.0, volume))
+        self._post("/player/volume", {"volume": int(self.state.volume * self._vol_steps)})
     def load_tracks(self, tracks, context_uri: str | None = None) -> None:
         # Metadata for the UI; actual playback of the context is started via the
         # Web API against this librespot device (wired in the app). TODO: device id.
@@ -258,6 +276,7 @@ class WebApiPlayer:
     """
 
     real_playback = True
+    populates_queue = True   # fetches /me/player/queue itself (app shouldn't)
 
     def __init__(self, web) -> None:
         self.web = web
