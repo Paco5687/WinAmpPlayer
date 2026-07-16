@@ -86,11 +86,47 @@ systemd-run --user --unit=winamp-ui \
   --working-directory=$HOME/WinAmpPlayer/pi \
   $HOME/WinAmpPlayer/pi/venv/bin/python -m winamp_player
 ```
-Rotate the display to portrait: `wlr-randr --output HDMI-A-1 --transform 90`.
-*(Boot-time kiosk autostart + persistent rotation = issue #13. The final screen is a
-HyperPixel 4.0 Square, issue for setup on the board.)*
+## 4. HyperPixel 4.0 Square + kiosk autostart
 
-## 4. Remote control from a laptop (optional, dev)
+The real display is a **Pimoroni HyperPixel 4.0 Square (720×720, DPI)**. DPI uses
+all 40 GPIO, so disable the GPIO interfaces first, then add the overlay:
+
+```bash
+sudo raspi-config nonint do_i2c 1   # DPI needs the I2C/SPI GPIO
+sudo raspi-config nonint do_spi 1
+echo "dtoverlay=vc4-kms-dpi-hyperpixel4sq" | sudo tee -a /boot/firmware/config.txt
+sudo reboot
+```
+
+After reboot the panel is output `DPI-1` at 720×720. **Don't** rotate with the
+overlay's `rotate=` — that flips the display at the KMS level but *not the touch
+matrix*. Rotate at the **compositor** level instead (moves display + touch
+together) — the kiosk launcher does this with `wlr-randr --output DPI-1
+--transform 180`.
+
+### Kiosk autostart (boots straight into the UI)
+
+Use the files in [`../deploy/`](../deploy/):
+
+```bash
+mkdir -p ~/.config/systemd/user
+cp ~/WinAmpPlayer/deploy/winamp-kiosk.service ~/.config/systemd/user/
+cp ~/WinAmpPlayer/deploy/winamp-kiosk.sh ~/.config/winamp-kiosk.sh
+chmod +x ~/.config/winamp-kiosk.sh
+sudo loginctl enable-linger "$USER"       # user manager starts at boot
+systemctl --user daemon-reload
+systemctl --user enable --now winamp-kiosk.service
+```
+
+Set `fullscreen = true` in `config.toml` (fills the 720×720 panel and hides the
+cursor). The launcher waits for the Wayland socket, so it's robust to boot timing;
+`Restart=on-failure` keeps it up, while a clean `q`/Esc still exits.
+
+> RPi's labwc runs the *system* autostart and ignores `~/.config/labwc/autostart`;
+> the XDG `.desktop` route was flaky on boot too. A **systemd user service** is the
+> reliable path here.
+
+## 5. Remote control from a laptop (optional, dev)
 
 Add the laptop's SSH public key to the Pi's `~/.ssh/authorized_keys` for passwordless
 `ssh bkern@winamp.local` — handy for deploying/logging without a keyboard on the Pi.
