@@ -1,5 +1,12 @@
 # Layout concepts (exploration — not the authoritative drawing)
 
+**concept-e — CURRENT FRONT-RUNNER (185 × 295 mm)**: the owner's sketch at A's
+proportions. **The screen is the centerpiece** (engraved accent frame, floated
+in open space); quiet right strip (speaker grille + 2×2 pots); view-key stack
+top-right; 6-button transport; LOOP/EQ/PRESET function row + encoders + balance;
+full-width seek; **A's 8 faders unchanged**, spread at 21 mm pitch. Pure layout —
+zero BOM/firmware/I/O change from A. Pending 1:1 paper test → replaces mainline.
+
 **concept-d — the owner's sketch (220 × 280 mm)**: OLED top-left, **view-key
 stack top-right**, 6-button transport row (+SHUF), full-width volume, function
 row (LOOP/EQ/PRESET keys + encoders + balance), **screen left**, speaker grille
