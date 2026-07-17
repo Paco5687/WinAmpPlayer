@@ -106,9 +106,6 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 (On top of the already-owned Pi/HyperPixel/SD ≈ $110 — consistent with the
 [BOM](BOM.md) estimate of $490–540 all-in.)
 
-**Reduced build** (volume + seek motorized only, plain slide pots for EQ): drop 8
-faders (−$160+), 3 DRV8833s, 1 PCA9685, MPR121 optional → new-parts total ≈ **$240–280**.
-
 ## Suggested order of orders
 
 1. **Adafruit cart + the seek-mechanism kit** (long-travel pot, N20, GT2 set) →
