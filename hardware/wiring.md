@@ -6,13 +6,13 @@
 |---|---|
 | [**System wiring**](diagrams/system-wiring.svg) | Full power + data topology: battery → UPS → Pi/motor rail; USB to the RP2040 + DAC; the I2C expander bus (PCA9685/MPR121/MCP23017) out to the faders |
 | [**Pico pinout**](diagrams/pico-pinout.svg) | Every RP2040 pin assignment (19 of 26 used, spares marked) |
-| [**Front panel**](diagrams/front-panel.svg) | Concept sketch — **superseded by the dimensioned [cad/front-panel.dxf](cad/)**, the authoritative cut drawing |
+| [**Front panel (authoritative)**](cad/) | The dimensioned cut drawing — `cad/front-panel.dxf` / `.svg` |
 
 ![System wiring](diagrams/system-wiring.svg)
 
 ![Pico pinout](diagrams/pico-pinout.svg)
 
-![Front panel](diagrams/front-panel.svg)
+![Front panel](cad/front-panel.svg)
 
 > ⚠️ **Dimension findings** (ALPS datasheet + the dimensioned cut drawing):
 > fader bodies are **18.5 mm wide × 26 mm deep × 106.5 mm long (M3 span 80 mm)**.
