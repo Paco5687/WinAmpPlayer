@@ -25,15 +25,14 @@ three facts that change the body:
 | **B. 5 bands + preamp** | 6 × 20 = 120 ✓ fits 127 | fewer bands; protocol/firmware are per-band so it's a config change |
 | **C. Reduced build** (motorized volume + seek only, slim non-motorized pots for EQ) | narrow pots ~10 mm pitch ✓ | loses the animated-EQ showpiece |
 
-> **FINAL (2026-07-17): 175 × 280 × 32 mm.** Decided after 1:1 paper tests of five
-> layouts (A + concepts B–E, see git history of cad/concepts/): with a 73 mm
-> screen window, the panel stays 7-bands-wide so the screen remains the
-> centerpiece. The DXF in [cad/](cad/)
-> proves this closes with real clearances. If that's too big after holding a
-> cardboard mockup, the compact fallback is **non-motorized 45 mm slide pots for
-> the EQ** (panel shrinks to roughly 150 × 200) — the generator is parametric, so
-> the variant is a constants change, and the firmware already treats read-only
-> faders as a config difference.
+> **Current direction (2026-07-17, pending 1:1 print approval): the ONE-MOTOR
+> design — 127 × 246 × ~30 mm** (`cad/front-panel-final.*`). EQ/volume/balance
+> use slim non-motorized pots (full classic PRE + 10-band bank fits the beloved
+> 127 mm width); **seek keeps the single motorized RS60N** (song-tracking
+> showpiece). Yanko-faithful details: 4 sculpted apertures over the one OLED,
+> WinAmp stack order, ON/AUTO/PRESET EQ header, ribbed caps, recessed wells.
+> Electronics collapse: no PCA9685s, 1× DRV8833, ~−$220. The earlier 175 × 280
+> all-motorized drawing (`cad/front-panel.*`) is superseded on approval.
 
 ## Design-for-machining rules (apply from the first CAD sketch)
 
@@ -126,6 +125,63 @@ portable between rooms, not pocket-portable. Design decisions:
   **Wi-Fi antenna window** — place the pocket accordingly in CAD.
 - The rear tray + stand get their own generated drawing when we do the body CAD
   (the parametric generator extends to it — same source of truth as the panel).
+
+## The OLED aperture cluster (how the "multiple displays" work)
+
+One 256×64 OLED sits behind **four sculpted apertures** (time+spectrum window,
+title strip, two kbps/kHz pills) — the panel mask turns one display into four.
+Implementation notes:
+- The apertures must land inside the OLED's **76.78 × 19.18 mm active area**;
+  positions in `cad/generate_panel.py` are derived from it. Mask alignment
+  tolerance ±0.5 mm — locate the OLED with pins/bosses, not adhesive guesswork.
+- Put a **smoked/amber acrylic layer** (~1 mm) behind the apertures so off
+  pixels vanish into black and the windows read as separate lit instruments.
+- Firmware renders each element at fixed pixel regions matching the mask (the
+  `DISP` data already carries everything; the region map is a table in
+  `firmware/src/config.h` when formalized).
+
+## The seek mechanism (owner's design, 2026-07-17): custom belt drive
+
+Off-the-shelf motorized faders package the motor IN-LINE with the track — the
+RS60N wastes 46 mm of length beyond its travel, and the 100 mm RSA0N is 146.5 mm
+long. **We build the drive ourselves instead** (this is how flying faders work
+internally anyway):
+
+- **Panel part**: a slim **manual long-travel slide pot** (~85–90 mm travel,
+  body ≤ 118 mm — VERIFY candidate part) → the slot spans ~70 % of the face at
+  the 127 mm width. Wiper = position feedback (mux, as always); metal knob =
+  touch electrode (MPR121).
+- **Drive**: micro gearmotor (N20-class) + 2× GT2 16T pulleys + a GT2 belt loop
+  behind the panel, with a printed clamp tying the belt to the fader lever — a
+  miniature 3D-printer axis. Motor mounts beside/behind; envelope ~120 × 14 mm
+  (REF box in the cut drawing).
+- **Electronics/firmware unchanged**: DRV8833 + the existing PID loop drive it
+  identically to a packaged motorized fader.
+- ⚠️ **The critical detail — backdrivability**: the user must be able to grab
+  the fader anytime. High-ratio gearmotors lock. Prototype in this order:
+  (1) **slip-clutch pulley** — printed friction hub on the motor pulley (what
+  ALPS does internally); (2) low-ratio (≤30:1) or coreless motor that
+  backdrives freely; (3) touch-triggered release as backup. **Bench-prove the
+  clutch before committing the panel.**
+- Benefits: −$20 ALPS fader → +~$15 of motor/belt/pulleys, every mechanical
+  part printable now and machinable later, and the seek slot finally matches
+  the concept's proportions.
+
+### Why output-side sensing (and not a servo indicator)
+
+Considered and rejected (2026-07-17): a servo-driven progress pointer ("the
+motor knows the position"). Three reasons the pot-on-the-knob topology wins:
+1. **The pot measures the actual knob** — belt slip is cosmetic and
+   self-correcting (PID drives until the *output* arrives). A servo knows only
+   its motor-side pot; a loose linkage lies with no sensor to catch it.
+2. **Touch-gating means motor motion can never seek the song** — position
+   events only fire while the MPR121 senses a grab. The song clock lives in
+   go-librespot; the fader follows it, not vice-versa.
+3. **Servos aren't back-drivable** — grab-to-scrub (the whole point) dies.
+
+**De-risk path**: the panel is identical with or without the motor — if the
+slip-clutch prototype disappoints, v1 ships seek as a manual-scrub fader and
+the belt drive lands in v1.1 with zero panel changes.
 
 ## Knobs & finish
 

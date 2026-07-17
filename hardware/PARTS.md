@@ -19,10 +19,9 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 
 | Part | SKU | Qty | ~$ ea | ~$ | For |
 |---|---|---|---|---|---|
-| 16-Ch 12-bit PWM driver (PCA9685) ✓ | [815](https://www.adafruit.com/product/815) | 2 | 14.95 | 29.90 | motor PWM (20 ch) |
-| 12-key capacitive touch (MPR121) | [1982](https://www.adafruit.com/product/1982) | 1 | 7.95 | 7.95 | fader touch-sense |
+| 12-key capacitive touch (MPR121) | [1982](https://www.adafruit.com/product/1982) | 1 | 7.95 | 7.95 | seek-knob touch electrode (1 ch used) |
 | MCP23017 GPIO expander breakout | [5346](https://www.adafruit.com/product/5346) | 1 | 5.95 | 5.95 | 13 panel buttons |
-| DRV8833 dual motor driver breakout | [3297](https://www.adafruit.com/product/3297) | 5 | 4.95 | 24.75 | fader motors ×10 |
+| DRV8833 dual motor driver breakout | [3297](https://www.adafruit.com/product/3297) | 1 | 4.95 | 4.95 | the ONE seek motor (direct Pico PWM — no PCA9685s in the build) |
 | Raspberry Pi Pico | [4864](https://www.adafruit.com/product/4864) | 1 | 4.00 | 4.00 | controls brain |
 | USB audio adapter (USB DAC) | [1475](https://www.adafruit.com/product/1475) | 1 | 4.95 | 4.95 | audio out |
 | Rotary encoder w/ push (24-det) | [377](https://www.adafruit.com/product/377) | 2 | 4.50 | 9.00 | scroll/select |
@@ -34,22 +33,30 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 | Switched 3.5 mm stereo jack (headphone detect) | generic panel-mount TRS w/ switch | 1 | 2 | 2.00 | headphones optional — insert mutes the amp |
 | Perma-Proto half-size ×3 | [571](https://www.adafruit.com/product/571) | 1 pk | 12.50 | 12.50 | interconnect boards |
 | Hook-up wire, JST kits, headers | misc | — | — | ~15 | wiring |
-| **Adafruit subtotal** | | | | **≈ 148** | |
+| **Adafruit subtotal** | | | | **≈ 98** | |
 
 > Adafruit doesn't stock: motorized faders, the SSD1322 OLED, the UPS, or bare
 > 18650 cells — those come from the vendors below.
 
-## 🛒 DigiKey (or Mouser) — the faders
+## 🛒 The seek mechanism (custom belt drive — see enclosure.md)
 
-| Part | SKU | Qty | ~$ ea | ~$ |
-|---|---|---|---|---|
-| ALPS **RS60N11M9A0F** — 60 mm-travel motorized fader, 10 kΩ, touch-sense lever | [DigiKey](https://www.digikey.com/en/products/detail/alps-alpine/RS60N11M9A0F/19529099) | 10 | 20–25 | 200–250 |
+| Part | Source | Qty | ~$ |
+|---|---|---|---|
+| Manual long-travel slide pot, 10 kΩ linear, ~85–90 mm travel, body ≤118 mm (**VERIFY**) | DigiKey/Mouser (Bourns PTB-class) or Soundwell | 1 (+1 spare) | 4–8 |
+| N20 micro gearmotor, 6 V, low ratio (≤30:1) — backdrivable | Amazon/Pololu | 2 (spare) | 8 |
+| GT2 16T pulleys ×2 + GT2 belt (200 mm loop) | printer-parts vendors | 1 set | 6 |
+| Slip-clutch hub | 3D-printed (design ours) | — | — |
 
-- **Buy 1 first, test, then buy 9** (per the BOM's sourcing advice).
-- Alternate if stock is thin: **Bourns PSM60-081A-103B2** (60 mm motorized, similar
-  footprint — re-verify touch-sense wiring).
-- ⚠️ Do **not** substitute the RSA0N11M9 series — that's the 100 mm-travel version
-  and won't fit the body.
+> **No packaged motorized faders in the build anymore** — the EQ/volume/balance
+> are slim manual pots and seek is the custom drive. Bench-prove the slip clutch
+> with these parts before cutting the panel.
+
+## 🛒 Slim pots (EQ ×11 + volume + balance)
+
+| Part | Source | Qty | ~$ |
+|---|---|---|---|
+| Slim slide pot, 45 mm travel, 10 kΩ linear (9 mm body) | DigiKey/Mouser/Soundwell | 13 (11 EQ + vol + spare) | 20–30 |
+| Mini slide pot, 20 mm travel (balance) | same | 1 | 2 |
 
 ## 🛒 Geekworm — power
 
@@ -88,22 +95,20 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 
 | | ~$ |
 |---|---|
-| Adafruit (incl. amp + speakers) | 148 |
-| Faders (DigiKey) | 200–250 |
+| Adafruit (incl. amp + speakers) | 98 |
+| Seek mechanism (pot + N20 + GT2) | 20 |
+| Slim pots (EQ + vol + bal) | 25–35 |
 | Power (Geekworm + cells) | 60 |
 | OLED | 22–38 |
 | Misc | 18 |
-| **New parts total** | **≈ 450–515** |
+| **New parts total** | **≈ 245–270** |
 
 (On top of the already-owned Pi/HyperPixel/SD ≈ $110 — consistent with the
 [BOM](BOM.md) estimate of $490–540 all-in.)
 
-**Reduced build** (volume + seek motorized only, plain slide pots for EQ): drop 8
-faders (−$160+), 3 DRV8833s, 1 PCA9685, MPR121 optional → new-parts total ≈ **$240–280**.
-
 ## Suggested order of orders
 
-1. **Adafruit cart + 1× fader from DigiKey** → bring up one motorized fader end to
-   end (PID, touch, PCA9685) before committing to ten.
-2. **X728 + cells** → battery/power milestone (Phase 7).
-3. **Remaining 9 faders + OLED** once the single-fader rig works.
+1. **Adafruit cart + the seek-mechanism kit** (long-travel pot, N20, GT2 set) →
+   bench-prove the belt drive + slip clutch (issue #65) before cutting the panel.
+2. **Slim pots + OLED** → the full control surface.
+3. **X728 + cells** → battery/power milestone (Phase 7).

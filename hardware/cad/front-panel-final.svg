@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="127.0mm" height="260.0mm" viewBox="0 0 127.0 260.0" font-family="monospace">
+<rect x="0" y="0" width="127.0" height="246.0" rx="4.0" fill="none" stroke="#222" stroke-width="0.5"/>
+<rect x="4.1" y="6.9" width="88.0" height="27.8" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="8.0" y="7.5" width="26.0" height="18.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="37.5" y="7.5" width="46.5" height="7.5" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="37.5" y="17.5" width="13.0" height="6.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="53.5" y="17.5" width="13.0" height="6.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="10.0" y="40.75" width="47.0" height="2.5" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="3.5" y="37.5" width="60.0" height="9.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="72.0" y="40.75" width="22.0" height="2.5" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="20.0" y="57.25" width="87.0" height="2.5" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="3.5" y="51.5" width="120.0" height="14.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="9.0" y="69.0" width="13.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="24.0" y="69.0" width="13.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="39.0" y="69.0" width="13.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="54.0" y="69.0" width="13.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="69.0" y="69.0" width="13.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="85.0" y="69.0" width="20.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="107.5" y="69.0" width="15.0" height="9.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="27.0" y="86.0" width="73.0" height="73.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="24.0" y="83.0" width="79.0" height="79.0" fill="none" stroke="#06c" stroke-width="0.2"/>
+<rect x="21.0" y="79.75" width="85.0" height="85.5" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="10.0" y="168.0" width="16.0" height="8.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="29.0" y="168.0" width="16.0" height="8.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="98.0" y="168.0" width="24.0" height="8.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="13.25" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="10.0" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="23.65" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="20.4" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="34.05" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="30.799999999999997" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="44.45" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="41.2" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="54.85" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="51.6" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="65.25" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="62.0" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="75.65" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="72.4" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="86.05" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="82.8" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="96.45" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="93.2" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="106.85000000000001" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="103.60000000000001" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<rect x="117.25" y="183.0" width="2.5" height="47.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<rect x="114.0" y="176.5" width="9.0" height="60.0" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="1.5 1"/>
+<circle cx="98.0" cy="13.0" r="3.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<circle cx="109.0" cy="13.0" r="3.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<circle cx="120.0" cy="13.0" r="3.0" fill="none" stroke="#c00" stroke-width="0.35"/>
+<circle cx="6.5" cy="42.0" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="60.5" cy="42.0" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="68.5" cy="42.0" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="97.5" cy="42.0" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="14.0" cy="58.5" r="1.45" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="113.0" cy="58.5" r="1.45" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="14.5" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="14.5" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="24.9" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="24.9" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="35.3" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="35.3" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="45.7" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="45.7" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="56.1" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="56.1" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="66.5" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="66.5" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="76.9" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="76.9" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="87.3" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="87.3" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="97.7" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="97.7" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="108.10000000000001" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="108.10000000000001" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="118.5" cy="179.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<circle cx="118.5" cy="233.5" r="1.2" fill="none" stroke="#c60" stroke-width="0.35"/>
+<text x="8.0" y="6.0" font-size="1.8" fill="#06c">OLED x4 apertures</text>
+<text x="95.5" y="22.5" font-size="1.8" fill="#06c">NOW</text>
+<text x="106.5" y="22.5" font-size="1.8" fill="#06c">PL</text>
+<text x="117.5" y="22.5" font-size="1.8" fill="#06c">QUE</text>
+<text x="5.5" y="40.5" font-size="2.5" fill="#06c">-</text>
+<text x="59.5" y="40.5" font-size="2.5" fill="#06c">+</text>
+<text x="66.0" y="40.5" font-size="2.0" fill="#06c">L</text>
+<text x="100.0" y="40.5" font-size="2.0" fill="#06c">R</text>
+<text x="106.0" y="40.0" font-size="2.8" fill="#06c">SpotAmp</text>
+<text x="10.0" y="53.5" font-size="1.8" fill="#06c">SEEK</text>
+<text x="10.5" y="82.0" font-size="2.0" fill="#06c">|<</text>
+<text x="25.5" y="82.0" font-size="2.0" fill="#06c">></text>
+<text x="40.5" y="82.0" font-size="2.0" fill="#06c">||</text>
+<text x="55.5" y="82.0" font-size="2.0" fill="#06c">[]</text>
+<text x="70.5" y="82.0" font-size="2.0" fill="#06c">>|</text>
+<text x="86.5" y="82.0" font-size="1.8" fill="#06c">SHUFFLE</text>
+<text x="109.0" y="82.0" font-size="1.8" fill="#06c">LOOP</text>
+<text x="11.5" y="180.0" font-size="1.8" fill="#06c">ON</text>
+<text x="30.5" y="180.0" font-size="1.8" fill="#06c">AUTO</text>
+<text x="99.5" y="180.0" font-size="1.8" fill="#06c">PRESET</text>
+<text x="3.5" y="182.0" font-size="1.6" fill="#06c">+12</text>
+<text x="5.0" y="205.0" font-size="1.6" fill="#06c">0</text>
+<text x="3.5" y="228.0" font-size="1.6" fill="#06c">-12</text>
+<text x="11.9" y="235.5" font-size="1.8" fill="#06c">PRE</text>
+<text x="22.299999999999997" y="235.5" font-size="1.8" fill="#06c">60</text>
+<text x="32.699999999999996" y="235.5" font-size="1.8" fill="#06c">170</text>
+<text x="43.1" y="235.5" font-size="1.8" fill="#06c">310</text>
+<text x="53.5" y="235.5" font-size="1.8" fill="#06c">600</text>
+<text x="63.9" y="235.5" font-size="1.8" fill="#06c">1K</text>
+<text x="74.30000000000001" y="235.5" font-size="1.8" fill="#06c">3K</text>
+<text x="84.7" y="235.5" font-size="1.8" fill="#06c">6K</text>
+<text x="95.10000000000001" y="235.5" font-size="1.8" fill="#06c">12K</text>
+<text x="105.50000000000001" y="235.5" font-size="1.8" fill="#06c">14K</text>
+<text x="115.9" y="235.5" font-size="1.8" fill="#06c">16K</text>
+<text x="2" y="250.0" font-size="2.8" fill="#666">YANKO-FAITHFUL — 127 x 246 mm — 4-aperture OLED, PRE+10 slim pots, BELT-DRIVE 85mm seek (custom mech)</text>
+<text x="2" y="255.0" font-size="2.5" fill="#666">EQ pitch 19.0 · fader slots 62x3 / M3 span 80 · screen win 73x73 · VERIFY-marked dims vs datasheets before cutting</text>
+</svg>
