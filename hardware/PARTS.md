@@ -21,19 +21,16 @@ Datasheets for everything here: run [`datasheets/fetch.sh`](datasheets/) and see
 |---|---|---|---|---|---|
 | 12-key capacitive touch (MPR121) | [1982](https://www.adafruit.com/product/1982) | 1 | 7.95 | 7.95 | seek-knob touch electrode (1 ch used) |
 | MCP23017 GPIO expander breakout | [5346](https://www.adafruit.com/product/5346) | 1 | 5.95 | 5.95 | 13 panel buttons |
-| DRV8833 dual motor driver breakout | [3297](https://www.adafruit.com/product/3297) | 1 | 4.95 | 4.95 | the ONE seek motor (direct Pico PWM — no PCA9685s in the build) |
-| Raspberry Pi Pico | [4864](https://www.adafruit.com/product/4864) | 1 | 4.00 | 4.00 | controls brain |
+| DRV8833 dual motor driver breakout ✓ | [3297](https://www.adafruit.com/product/3297) | 1 | 5.95 | 5.95 | the ONE seek motor (direct Pico PWM — no PCA9685s in the build) |
+| Raspberry Pi Pico | ⚠️ **OOS at Adafruit (all variants, 2026-07)** — Micro Center/PiShop/Amazon ~$4 | 1 | 4.00 | 4.00 | controls brain |
 | USB audio adapter (USB DAC) | [1475](https://www.adafruit.com/product/1475) | 1 | 4.95 | 4.95 | audio out |
-| Rotary encoder w/ push (24-det) | [377](https://www.adafruit.com/product/377) | 2 | 4.50 | 9.00 | scroll/select |
-| Tactile buttons, 12 mm assortment | [1119](https://www.adafruit.com/product/1119) | 1 pk | 5.95 | 5.95 | 13 panel buttons |
-| NeoPixel Stick (8× WS2812) | [1426](https://www.adafruit.com/product/1426) | 1 | 5.95 | 5.95 | VU/status glow |
-| Slide potentiometer, 45 mm | [4271](https://www.adafruit.com/product/4271) | 1 | 1.95 | 1.95 | balance |
+| Tactile switches 12 mm (10-pack) ✓ | [1119](https://www.adafruit.com/product/1119) | 2 pk | 2.50 | 5.00 | 13 panel buttons + spares |
 | **Stereo 2.8 W Class-D amp, I2C AGC (TPA2016)** ✓ | [1712](https://www.adafruit.com/product/1712) | 1 | 9.95 | 9.95 | internal speakers (on the RP2040 I2C bus) |
-| **Enclosed stereo speaker set, 3 W 4 Ω** ✓ | [1669](https://www.adafruit.com/product/1669) | 1 | 7.50 | 7.50 | 70×30×17 mm each, sealed backs — ⚠️ out of stock at check (notify list; alt: 2× mono enclosed [3351](https://www.adafruit.com/product/3351)) |
+| **Mono enclosed speaker 3 W 4 Ω ×2** ✓ | [3351](https://www.adafruit.com/product/3351) | 2 | 3.95 | 7.90 | stereo pair; the 1669 set stays OOS (DigiKey stocks it if preferred) |
 | Switched 3.5 mm stereo jack (headphone detect) | generic panel-mount TRS w/ switch | 1 | 2 | 2.00 | headphones optional — insert mutes the amp |
-| Perma-Proto half-size ×3 | [571](https://www.adafruit.com/product/571) | 1 pk | 12.50 | 12.50 | interconnect boards |
+| Perma-Proto half-size (singles ×3 — 3-pack OOS) ✓ | [1609](https://www.adafruit.com/product/1609) | 3 | 4.50 | 13.50 | interconnect boards |
 | Hook-up wire, JST kits, headers | misc | — | — | ~15 | wiring |
-| **Adafruit subtotal** | | | | **≈ 98** | |
+| **Adafruit subtotal (cart built 2026-07-17: $61.15 + wire/misc)** | | | | **≈ 76** | |
 
 > Adafruit doesn't stock: motorized faders, the SSD1322 OLED, the UPS, or bare
 > 18650 cells — those come from the vendors below.
